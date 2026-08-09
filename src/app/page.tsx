@@ -1,9 +1,5 @@
-import {Button} from "@/components/ui/button";
+import { redirect } from "next/navigation";
 
-export default function HomePage() {
-  return (
-    <main className="flex min-h-screen items-center justify-center">
-      <Button>Continue</Button>
-    </main>
-  );
+export default function Home() {
+  redirect("/login");
 }

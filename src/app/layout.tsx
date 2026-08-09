@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
+import { Roboto } from "next/font/google";
+
 import "./globals.css";
 
 import { QueryProvider } from "@/providers";
+
+const roboto = Roboto({
+  variable: "--font-roboto",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Wallet",
@@ -15,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={roboto.variable}>
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>

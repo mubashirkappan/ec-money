@@ -2,7 +2,7 @@ import api from "@/lib/axios";
 import {
   LoginRequest,
   LoginResponse,
-} from "@/features/auth/types/auth.types";
+} from "@/features/auth/login/types/auth.types";
 
 export async function login(
   payload: LoginRequest

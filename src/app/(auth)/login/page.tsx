@@ -1,10 +1,5 @@
-import AuthLayout from "@/features/auth/components/AuthLayout";
-import LoginCard from "@/features/auth/components/LoginCard";
+import LoginPage from "@/features/auth/login/LoginView";
 
-export default function LoginPage() {
-  return (
-    <AuthLayout>
-      <LoginCard />
-    </AuthLayout>
-  );
+export default function Page() {
+  return <LoginPage />;
 }
