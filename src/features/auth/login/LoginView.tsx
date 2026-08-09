@@ -1,10 +1,25 @@
+"use client";
+
+import { useState } from "react";
 import AuthHero from "@/features/auth/login/components/AuthHero";
 import LoginForm from "@/features/auth/login/components/LoginForm";
 import AppLayout from "@/components/layout/AppLayout";
+import PageLoading from "@/components/common/PageLoading";
 
 import { Wallet } from 'lucide-react'
 
 export default function LoginPage() {
+
+  const [isPageLoading, setIsPageLoading] = useState(false);
+
+  if (isPageLoading) {
+    return (
+      <AppLayout>
+        <PageLoading />
+      </AppLayout>
+    );
+  }
+
   return (
     <AppLayout>
       <div className="min-h-screen w-full lg:grid lg:grid-cols-2">
@@ -29,7 +44,7 @@ export default function LoginPage() {
               </p>
             </div>
 
-            <LoginForm />
+            <LoginForm onPageLoading={setIsPageLoading}/>
           </div>
 
         </div>  

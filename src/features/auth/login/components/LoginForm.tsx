@@ -1,8 +1,8 @@
 "use client";
 
+import {useState} from 'react';
 import Link from "next/link";
 import {
-  Mail,
   ShieldCheck,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -21,13 +21,21 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
-export default function LoginForm() {
+interface LoginFormProps {
+  onPageLoading: (loading: boolean) => void;
+}
+
+export default function LoginForm({
+  onPageLoading,
+}: LoginFormProps) {
+
   const router = useRouter();
 
   const {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: {
       errors,
       isSubmitting,
@@ -36,20 +44,36 @@ export default function LoginForm() {
     resolver: zodResolver(loginSchema),
 
     defaultValues: {
-      username: "",
+      email_or_mobile: "",
       password: "",
       rememberMe: false,
     },
   });
 
   async function onSubmit(values: LoginFormValues) {
-    console.log("Frontend login:", values);
+    onPageLoading(true);
 
-    await new Promise((resolve) =>
-      setTimeout(resolve, 1200)
-    );
+    try {
+      console.log("Frontend login:", values);
 
-    router.push("/dashboard");
+      // API request here
+      await new Promise((resolve) =>
+        setTimeout(resolve, 1200)
+      );
+
+      const loginSuccess = true; // API result
+
+      if (loginSuccess) {
+        router.push("/dashboard");
+      } else {
+        onPageLoading(false);
+        router.push("/login");
+      }
+    } catch (error) {
+      console.log(error);
+      onPageLoading(false);
+      router.push("/login");
+    }
   }
 
   return (
@@ -61,8 +85,8 @@ export default function LoginForm() {
         id="username"
         label="Username"
         placeholder="Enter email or mobile number"
-        error={errors.username?.message}
-        {...register("username")}
+        error={errors.email_or_mobile?.message}
+        {...register("email_or_mobile")}
       />
 
       <PasswordInput
@@ -78,7 +102,7 @@ export default function LoginForm() {
         <div className="flex items-center gap-2">
           <Checkbox
             id="rememberMe"
-            {...register("username")}
+            checked={watch("rememberMe")}
             onCheckedChange={(checked) =>
               setValue(
                 "rememberMe",
@@ -103,7 +127,7 @@ export default function LoginForm() {
         </Link>
       </div>
 
-      <Button
+      {/* <Button
         type="submit"
         disabled={isSubmitting}
         className="h-12 w-full rounded-xl bg-blue-600 text-sm font-semibold shadow-lg shadow-blue-600/20 transition-all hover:bg-blue-700 hover:shadow-blue-600/30"
@@ -111,11 +135,19 @@ export default function LoginForm() {
         {isSubmitting ? (
           <span className="flex items-center gap-2">
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-            Signing in...
+            <Loader className="animate-spin h-12 w-12"/> Signing in...
           </span>
         ) : (
           "Sign in"
         )}
+      </Button> */}
+
+      <Button
+        type="submit"
+        disabled={isSubmitting}
+        className="h-12 w-full rounded-xl bg-blue-600 text-sm font-semibold shadow-lg shadow-blue-600/20 transition-all hover:bg-blue-700 hover:shadow-blue-600/30"
+      >
+        Sign in
       </Button>
 
       <div className="flex items-center justify-center gap-1 pt-2 text-sm">
