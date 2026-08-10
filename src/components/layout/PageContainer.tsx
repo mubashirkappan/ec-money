@@ -16,7 +16,7 @@ export default function PageContainer({
       <TooltipProvider>
         <SidebarProvider>
           <AppSidebar />
-          <div className="p-4">
+          <div className="p-4 w-full">
             {children}
           </div>
         </SidebarProvider>

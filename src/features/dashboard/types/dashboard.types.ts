@@ -17,10 +17,12 @@ export interface QuickAction {
   href: string;
 }
 
-export interface Transaction {
+export type Transaction = {
   id: number;
-  title: string;
-  amount: number;
+  party: string;
+  amount: float;
   date: string;
-  status: "Completed" | "Pending" | "Failed";
-}
+  type: "debited" | "credited";
+  status: "completed" | "pending" | "cancelled";
+  note: string;
+};

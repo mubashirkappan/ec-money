@@ -9,14 +9,15 @@ interface Props {
 export default function ActionCard({
   action,
 }: Props) {
-  const Icon = action.icon;
 
   return (
     <Link href={action.href}>
-      <Card className="cursor-pointer rounded-2xl p-5 transition-all hover:shadow-lg hover:-translate-y-1">
-        <div className="space-y-3">
-          <div className="inline-flex rounded-xl bg-primary/10 p-3">
-            <Icon className="h-6 w-6 text-primary" />
+      <Card className="cursor-pointer p-5 transition-all hover:shadow-lg hover:-translate-y-1">
+        <div className="space-y-3 grid justify-center items-center text-center">
+          <div className="flex justify-center w-full">
+            <div className="flex items-center justify-center size-12 bg-black rounded-xl">
+              <action.icon className="size-6 text-white" />
+            </div>
           </div>
 
           <div>
