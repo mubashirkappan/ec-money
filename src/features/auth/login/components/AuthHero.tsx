@@ -29,7 +29,7 @@ const features = [
 
 export default function AuthHero() {
   return (
-    <aside className="relative hidden lg:flex flex-col justify-between overflow-hidden bg-[#0B0F1A] !p-10 xl:!p-14 text-white">
+    <aside className="relative hidden lg:flex flex-col justify-between overflow-hidden bg-[#0B0F1A] p-10 xl:p-14 text-white">
 
       <div className="pointer-events-none absolute -top-32 -left-24 w-96 h-96 rounded-full bg-indigo-500/30 blur-3xl" />
       <div className="pointer-events-none absolute bottom-0 right-0 w-[28rem] h-[28rem] rounded-full bg-emerald-400/20 blur-3xl" />
@@ -42,9 +42,9 @@ export default function AuthHero() {
       <div className="relative z-10">
         <Logo />
 
-        <p className="text-sm font-medium text-emerald-300/90 !mt-12 !mb-4">The digital wallet built for modern money</p>
+        <p className="text-sm font-medium text-emerald-300/90 mt-12 mb-4">The digital wallet built for modern money</p>
 
-        <h1 className="text-4xl xl:text-5xl font-semibold tracking-tight leading-[1.1] !mt-12">
+        <h1 className="text-4xl xl:text-5xl font-semibold tracking-tight leading-[1.1] mt-12">
           Your money,
           <br />
           <span className="bg-gradient-to-r from-indigo-300 via-white to-emerald-300 bg-clip-text text-transparent">
@@ -52,13 +52,13 @@ export default function AuthHero() {
           </span>
         </h1>
 
-        <p className="!mt-5 text-white/70 leading-relaxed">
+        <p className="mt-5 text-white/70 leading-relaxed">
           Secure wallet, instant transfers,
           transaction history and complete
           financial control in one place.
         </p>
 
-        <ul className="!mt-16 !space-y-6">
+        <ul className="mt-16 space-y-6">
           {features.map((f) => (
             <li key={f.title} className="flex gap-4">
               <div className="grid place-items-center w-11 h-11 shrink-0 rounded-xl bg-white/10 ring-1 ring-white/15 backdrop-blur">

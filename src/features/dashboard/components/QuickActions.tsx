@@ -1,5 +1,5 @@
 import ActionCard from "./ActionCard";
-import { quickActions } from "../data/dashboard.mock";
+import { quickActions } from "../../../dummy_db/dashboard.mock";
 
 export default function QuickActions() {
   return (

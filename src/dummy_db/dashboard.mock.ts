@@ -9,7 +9,7 @@ import {
   DashboardSummary,
   QuickAction,
   Transaction,
-} from "../types/dashboard.types";
+} from "../features/dashboard/types/dashboard.types";
 
 export const summary: DashboardSummary = {
   balance: 125450,

@@ -37,7 +37,7 @@ const AppInput = forwardRef<HTMLInputElement, AppInputProps>(
     ref
   ) => {
     return (
-      <div className="!space-y-2">
+      <div className="space-y-2">
         {label && (
           <Label
             htmlFor={id}
@@ -58,7 +58,7 @@ const AppInput = forwardRef<HTMLInputElement, AppInputProps>(
             id={id}
             {...props}
             className={cn(
-              "h-12 rounded-xl border-slate-200 bg-white !px-8 text-sm shadow-none",
+              "h-12 rounded-xl border-slate-200 bg-white px-8 text-sm shadow-none",
               "placeholder:text-slate-400",
               "focus-visible:border-blue-500 focus-visible:ring-4 focus-visible:ring-blue-500/10",
               error &&

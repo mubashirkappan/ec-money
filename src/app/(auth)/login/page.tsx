@@ -1,5 +1,5 @@
-import LoginPage from "@/features/auth/login/LoginView";
+import LoginView from "@/features/auth/login/LoginView";
 
-export default function Page() {
-  return <LoginPage />;
+export default function LoginPage() {
+  return <LoginView />;
 }

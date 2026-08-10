@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 
 import StatCard from "./StatCard";
-import { summary } from "../data/dashboard.mock";
+import { summary } from "../../../dummy_db/dashboard.mock";
 
 export default function Statistics() {
   return (

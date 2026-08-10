@@ -41,7 +41,7 @@ const PasswordInput = forwardRef<
       useState(false);
 
     return (
-      <div className="!space-y-2">
+      <div className="space-y-2">
         <Label
           htmlFor={id}
           className="text-sm font-medium text-slate-700"
@@ -60,7 +60,7 @@ const PasswordInput = forwardRef<
             type={showPassword ? "text" : "password"}
             aria-invalid={!!error}
             className={cn(
-              "h-12 rounded-xl border-slate-200 bg-white !px-8 text-sm shadow-none",
+              "h-12 rounded-xl border-slate-200 bg-white px-8 text-sm shadow-none",
               "placeholder:text-slate-400",
               "focus-visible:border-blue-500 focus-visible:ring-4 focus-visible:ring-blue-500/10",
               error &&

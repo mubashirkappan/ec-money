@@ -79,7 +79,7 @@ export default function LoginForm({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="!space-y-4"
+      className="space-y-4"
     >
       <AppInput
         id="username"
