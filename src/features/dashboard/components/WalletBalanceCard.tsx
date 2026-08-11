@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import {
     Card,
     CardContent,
@@ -5,9 +8,34 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 
-import { Wallet, TrendingUp, TrendingDown } from "lucide-react";
+import { Wallet, TrendingUp, TrendingDown, Eye, EyeOff } from "lucide-react";
+
+import { transactions } from "@/dummy_db/dashboard.mock";
 
 export default function WalletBalanceCard() {
+
+    const [showBalance, setShowBalance] = useState(false);
+
+    const completedTransactions = transactions.filter(
+        (transaction) => transaction.status === "completed"
+    );
+
+    const totalIncome = completedTransactions
+        .filter((transaction) => transaction.type === "credited")
+        .reduce((total, transaction) => total + transaction.amount, 0);
+
+    const totalExpenses = completedTransactions
+        .filter((transaction) => transaction.type === "debited")
+        .reduce((total, transaction) => total + transaction.amount, 0);
+
+    const netBalanceChange = totalIncome - totalExpenses;
+
+    const formattedTotalIncome = totalIncome.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2,});
+
+    const formattedTotalExpenses = totalExpenses.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2,});
+
+    const netBalance = netBalanceChange.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2,});
+
     return (
         <Card className="bg-linear-to-br from-emerald-400/20 to-indigo-500/30 bg-black p-5">
 
@@ -30,10 +58,23 @@ export default function WalletBalanceCard() {
 
                 <CardContent className="space-y-6">
 
-                    <div>
+                    <div className="flex items-center gap-3">
                         <h2 className="text-4xl font-semibold text-white">
-                            ₹125,450.00
+                            ₹{showBalance ? netBalance : "xxxx.xx"}
                         </h2>
+
+                        <button
+                            type="button"
+                            onClick={() => setShowBalance((prev) => !prev)}
+                            className="text-white/70 transition hover:text-white"
+                            aria-label={showBalance ? "Hide balance" : "Show balance"}
+                        >
+                            {showBalance ? (
+                                <EyeOff className="h-5 w-5" />
+                            ) : (
+                                <Eye className="h-5 w-5" />
+                            )}
+                        </button>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
@@ -42,12 +83,12 @@ export default function WalletBalanceCard() {
                             <div className="flex items-center gap-1 text-green-500 text-md font-semibold">
                                 <TrendingUp className="size-4"/>
                                 <p className="flex">
-                                    Income
+                                    Total Income
                                 </p>
                             </div>
 
                             <h3 className="text-xl font-semibold text-white">
-                                ₹15,200.00
+                                ₹{formattedTotalIncome}
                             </h3>
                         </div>
 
@@ -55,12 +96,12 @@ export default function WalletBalanceCard() {
                             <div className="flex items-center gap-1 text-red-400 text-md font-semibold">
                                 <TrendingDown className="size-4"/>
                                 <p className="flex">
-                                    Spending
+                                    Total Expenses
                                 </p>
                             </div>
 
                             <h3 className="text-xl font-semibold text-white">
-                                ₹8,400.00
+                                ₹{formattedTotalExpenses}
                             </h3>
                         </div>
 

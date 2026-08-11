@@ -118,7 +118,7 @@ export function AppSidebar() {
 
                       <CreditCard />
 
-                      <span>Payments</span>
+                      <span>Payments & Transfers</span>
 
                       <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
 
@@ -133,7 +133,16 @@ export function AppSidebar() {
                       <SidebarMenuSubItem>
                         <SidebarMenuSubButton asChild>
                           <Link href="/dashboard/payments">
-                            <span>Make Payment</span>
+                            <span>Send Money</span>
+                          </Link>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                      
+                      
+                      <SidebarMenuSubItem>
+                        <SidebarMenuSubButton asChild>
+                          <Link href="/dashboard/payments">
+                            <span>Request Money</span>
                           </Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
@@ -142,7 +151,7 @@ export function AppSidebar() {
                       <SidebarMenuSubItem>
                         <SidebarMenuSubButton asChild>
                           <Link href="/dashboard/payments/history">
-                            <span>Payment History</span>
+                            <span>Pay Bills</span>
                           </Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
@@ -272,11 +281,11 @@ export function AppSidebar() {
                   <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
 
                     <span className="truncate font-semibold">
-                      John Doe
+                      Adam
                     </span>
 
                     <span className="truncate text-xs text-slate-300">
-                      john@example.com
+                      adam@example.com
                     </span>
 
                   </div>

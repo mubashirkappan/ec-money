@@ -58,22 +58,22 @@ const AppInput = forwardRef<HTMLInputElement, AppInputProps>(
             id={id}
             {...props}
             className={cn(
-              "h-12 rounded-xl border-slate-200 bg-white px-8 text-sm shadow-none",
+              "h-12 rounded-xl border-slate-200 px-8 text-sm shadow-none",
               "placeholder:text-slate-400",
               "focus-visible:border-blue-500 focus-visible:ring-4 focus-visible:ring-blue-500/10",
               error &&
                 "border-red-400 focus-visible:border-red-500 focus-visible:ring-red-500/10",
               className
             )}
-            style={{
-              backgroundColor: bgColor
-                ? colors[bgColor]
-                : colors.white,
+            // style={{
+            //   backgroundColor: bgColor
+            //     ? colors[bgColor]
+            //     : colors.white,
 
-              color: textColor
-                ? colors[textColor]
-                : colors.text,
-            }}
+            //   color: textColor
+            //     ? colors[textColor]
+            //     : colors.text,
+            // }}
             aria-invalid={!!error}
           />
         </div>

@@ -21,11 +21,11 @@ export default function ActionCard({
           </div>
 
           <div>
-            <h4 className="font-semibold">
+            <h4 className="font-semibold whitespace-nowrap">
               {action.title}
             </h4>
 
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground whitespace-nowrap">
               {action.description}
             </p>
           </div>
