@@ -12,11 +12,11 @@ export default function ActionCard({
 
   return (
     <Link href={action.href}>
-      <Card className="cursor-pointer p-5 transition-all hover:shadow-lg hover:-translate-y-1">
+      <Card className="cursor-pointer p-5 transition-all hover:shadow-lg hover:-translate-y-1 hover:bg-slate-100/20">
         <div className="space-y-3 grid justify-center items-center text-center">
           <div className="flex justify-center w-full">
-            <div className="flex items-center justify-center size-12 bg-black rounded-xl">
-              <action.icon className="size-6 text-white" />
+            <div className="flex items-center justify-center size-12 bg-emerald-100 text-emerald-600 rounded-xl">
+              <action.icon className="size-6" />
             </div>
           </div>
 

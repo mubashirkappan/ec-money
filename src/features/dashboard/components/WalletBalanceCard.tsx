@@ -10,7 +10,7 @@ import {
 
 import { Wallet, TrendingUp, TrendingDown, Eye, EyeOff } from "lucide-react";
 
-import { transactions } from "@/dummy_db/dashboard.mock";
+import { transactions } from "@/dummy_db/transaction.mock";
 
 export default function WalletBalanceCard() {
 
@@ -37,7 +37,7 @@ export default function WalletBalanceCard() {
     const netBalance = netBalanceChange.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2,});
 
     return (
-        <Card className="bg-linear-to-br from-emerald-400/20 to-indigo-500/30 bg-black p-5">
+        <Card className="bg-linear-to-br from-emerald-950 via-slate-900 to-indigo-950 p-5">
 
             {/* Content */}
             <div className="grid gap-8">
@@ -60,7 +60,7 @@ export default function WalletBalanceCard() {
 
                     <div className="flex items-center gap-3">
                         <h2 className="text-4xl font-semibold text-white">
-                            ₹{showBalance ? netBalance : "xxxx.xx"}
+                            ₹ {showBalance ? netBalance : "----------"}
                         </h2>
 
                         <button

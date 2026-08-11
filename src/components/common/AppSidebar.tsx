@@ -10,6 +10,11 @@ import {
   Settings,
   User,
   Wallet,
+  UserRoundPlus,
+  Landmark,
+  HandCoins,
+  ScrollText,
+  PlusCircle
 } from "lucide-react";
 
 import {
@@ -82,13 +87,13 @@ export function AppSidebar() {
 
         <SidebarGroup>
 
-          <SidebarGroupLabel>
+          <SidebarGroupLabel className="text-md">
             Main
           </SidebarGroupLabel>
 
           <SidebarGroupContent>
 
-            <SidebarMenu>
+            <SidebarMenu className="gap-2">
 
               {/* Dashboard */}
 
@@ -98,8 +103,8 @@ export function AppSidebar() {
                   tooltip="Dashboard"
                 >
                   <Link href="/dashboard">
-                    <LayoutDashboard />
-                    <span>Dashboard</span>
+                    <LayoutDashboard className="size-10"/>
+                    <span className="text-lg">Dashboard</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -118,7 +123,7 @@ export function AppSidebar() {
 
                       <CreditCard />
 
-                      <span>Payments & Transfers</span>
+                      <span className="text-lg">Payments & Transfers</span>
 
                       <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
 
@@ -131,29 +136,42 @@ export function AppSidebar() {
                     <SidebarMenuSub>
 
                       <SidebarMenuSubItem>
-                        <SidebarMenuSubButton asChild>
+                        <SidebarMenuButton asChild>
                           <Link href="/dashboard/payments">
+                            <PlusCircle />
+                            <span>Top Up</span>
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuSubItem>
+                      
+                      
+                      <SidebarMenuSubItem>
+                        <SidebarMenuButton asChild>
+                          <Link href="/dashboard/payments">
+                            <Landmark />
                             <span>Send Money</span>
                           </Link>
-                        </SidebarMenuSubButton>
+                        </SidebarMenuButton>
                       </SidebarMenuSubItem>
                       
                       
                       <SidebarMenuSubItem>
-                        <SidebarMenuSubButton asChild>
+                        <SidebarMenuButton asChild>
                           <Link href="/dashboard/payments">
+                            <HandCoins />
                             <span>Request Money</span>
                           </Link>
-                        </SidebarMenuSubButton>
+                        </SidebarMenuButton>
                       </SidebarMenuSubItem>
 
 
                       <SidebarMenuSubItem>
-                        <SidebarMenuSubButton asChild>
+                        <SidebarMenuButton asChild>
                           <Link href="/dashboard/payments/history">
+                            <ScrollText />
                             <span>Pay Bills</span>
                           </Link>
-                        </SidebarMenuSubButton>
+                        </SidebarMenuButton>
                       </SidebarMenuSubItem>
 
                     </SidebarMenuSub>
@@ -166,64 +184,45 @@ export function AppSidebar() {
 
               {/* Transactions */}
 
-              <Collapsible className="group/collapsible">
+              <SidebarMenuItem>
 
-                <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  tooltip="Transactions"
+                >
+                  <Link href="/transactions">
 
-                  <CollapsibleTrigger asChild>
-                    <SidebarMenuButton tooltip="Transactions">
+                    <History />
 
-                      <History />
+                    <span className="text-lg">Transactions</span>
 
-                      <span>Transactions</span>
+                  </Link>
+                </SidebarMenuButton>
 
-                      <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
-
-                    </SidebarMenuButton>
-                  </CollapsibleTrigger>
-
-
-                  <CollapsibleContent>
-
-                    <SidebarMenuSub>
-
-                      <SidebarMenuSubItem>
-                        <SidebarMenuSubButton asChild>
-                          <Link href="/dashboard/transactions">
-                            <span>All Transactions</span>
-                          </Link>
-                        </SidebarMenuSubButton>
-                      </SidebarMenuSubItem>
+              </SidebarMenuItem>
 
 
-                      <SidebarMenuSubItem>
-                        <SidebarMenuSubButton asChild>
-                          <Link href="/dashboard/transactions/income">
-                            <span>Income</span>
-                          </Link>
-                        </SidebarMenuSubButton>
-                      </SidebarMenuSubItem>
+              {/* Beneficiary */}
 
+              <SidebarMenuItem>
 
-                      <SidebarMenuSubItem>
-                        <SidebarMenuSubButton asChild>
-                          <Link href="/dashboard/transactions/expenses">
-                            <span>Expenses</span>
-                          </Link>
-                        </SidebarMenuSubButton>
-                      </SidebarMenuSubItem>
+                <SidebarMenuButton
+                  asChild
+                  tooltip="Beneficiary"
+                >
+                  <Link href="/dashboard/settings">
 
-                    </SidebarMenuSub>
+                    <UserRoundPlus />
 
-                  </CollapsibleContent>
+                    <span className="text-lg">Beneficiary</span>
 
-                </SidebarMenuItem>
+                  </Link>
+                </SidebarMenuButton>
 
-              </Collapsible>
-
-
+              </SidebarMenuItem>
+              
               {/* Settings */}
-
+              
               <SidebarMenuItem>
 
                 <SidebarMenuButton
@@ -234,7 +233,7 @@ export function AppSidebar() {
 
                     <Settings />
 
-                    <span>Settings</span>
+                    <span className="text-lg">Settings</span>
 
                   </Link>
                 </SidebarMenuButton>
