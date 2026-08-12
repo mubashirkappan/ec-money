@@ -2,7 +2,6 @@ import { transactions } from "@/dummy_db/transaction.mock";
 
 export type ChartData = {
   label: string;
-  income: number;
   expense: number;
 };
 
@@ -25,17 +24,6 @@ export function parseTransactionDate(date: string) {
 function getTransactionTotals(
   filteredTransactions: typeof transactions
 ) {
-  const income = filteredTransactions
-    .filter(
-      (transaction) =>
-        transaction.type === "credited"
-    )
-    .reduce(
-      (total, transaction) =>
-        total + transaction.amount,
-      0
-    );
-
   const expense = filteredTransactions
     .filter(
       (transaction) =>
@@ -48,7 +36,6 @@ function getTransactionTotals(
     );
 
   return {
-    income,
     expense,
   };
 }

@@ -58,11 +58,6 @@ import {
 } from "lucide-react";
 
 const chartConfig = {
-  income: {
-    label: "Income",
-    color: "#10b981",
-  },
-
   expense: {
     label: "Expenses",
     color: "#f87171",
@@ -129,10 +124,7 @@ export default function FinancialOverview() {
    */
   const maxValue = Math.max(
     ...chartData.flatMap(
-      (item) => [
-        item.income,
-        item.expense,
-      ]
+      (item) => item.expense
     )
   );
 
@@ -432,14 +424,6 @@ export default function FinancialOverview() {
 
             <ChartLegend
               content={<ChartLegendContent />}
-            />
-
-            <Line
-              type="monotone"
-              dataKey="income"
-              stroke="var(--color-income)"
-              strokeWidth={2}
-              dot={false}
             />
 
             <Line

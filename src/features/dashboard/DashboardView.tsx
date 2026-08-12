@@ -33,11 +33,6 @@ export default function DashboardView() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
-          {/* <div className="space-y-4">
-            <WalletBalanceCard />
-            <QuickActions />
-          </div> */}
-
           <FinancialOverview/>
 
           <div className="flex items-center justify-center rounded-xl border border-slate-200/700 dark:border-0 text-6xl">

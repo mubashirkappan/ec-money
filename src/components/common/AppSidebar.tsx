@@ -112,7 +112,7 @@ export function AppSidebar() {
 
               {/* Payments */}
 
-              <Collapsible
+              {/* <Collapsible
                 defaultOpen
                 className="group/collapsible"
               >
@@ -179,7 +179,24 @@ export function AppSidebar() {
                   </CollapsibleContent>
 
                 </SidebarMenuItem>
-              </Collapsible>
+              </Collapsible> */}
+
+              <SidebarMenuItem>
+
+                <SidebarMenuButton
+                  asChild
+                  tooltip="Transfer Money"
+                >
+                  <Link href="/payments">
+
+                    <CreditCard />
+
+                    <span className="text-lg">Transfer Money</span>
+
+                  </Link>
+                </SidebarMenuButton>
+
+              </SidebarMenuItem>
 
 
               {/* Transactions */}
