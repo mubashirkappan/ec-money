@@ -62,7 +62,7 @@ export default function RecentTransactions() {
                       ? "text-green-700"
                       : "text-red-500"
                   )}>
-                    { transType === "credited" ? "+" : "-"}₹{amount}
+                    { transType === "credited" ? "+" : "-"} ₹{amount}
                   </span>
                   <span className="text-slate-400 text-xs text-end">{t.date} {t.time}</span>
                 </div>

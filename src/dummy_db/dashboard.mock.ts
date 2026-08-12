@@ -1,5 +1,5 @@
 import {
-  Landmark, HandCoins, ScrollText, PlusCircle
+  Landmark, HandCoins, UsersRound
 } from "lucide-react";
 
 import {
@@ -19,30 +19,16 @@ export const summary: DashboardSummary = {
 export const quickActions: QuickAction[] = [
   {
     id: 1,
-    title: "Top Up",
-    description: "Add to wallet",
-    icon: PlusCircle,
-    href: "/history",
-  },
-  {
-    id: 2,
     title: "Send Money",
     description: "Transfer instantly",
     icon: Landmark,
     href: "/payments",
   },
   {
-    id: 3,
-    title: "Request Money",
-    description: "Request others",
-    icon: HandCoins,
-    href: "/request",
-  },
-  {
-    id: 4,
-    title: "Pay Bills",
-    description: "Utility payments",
-    icon: ScrollText,
-    href: "/payments",
+    id: 2,
+    title: "Beneficiaries",
+    description: "View Beneficiaries",
+    icon: UsersRound,
+    href: "/beneficiary",
   },
 ];

@@ -20,7 +20,7 @@ export default function WalletBalanceCard() {
         (transaction) => transaction.status === "completed"
     );
 
-    const totalIncome = completedTransactions
+    const totalFunded = completedTransactions
         .filter((transaction) => transaction.type === "credited")
         .reduce((total, transaction) => total + transaction.amount, 0);
 
@@ -28,9 +28,9 @@ export default function WalletBalanceCard() {
         .filter((transaction) => transaction.type === "debited")
         .reduce((total, transaction) => total + transaction.amount, 0);
 
-    const netBalanceChange = totalIncome - totalExpenses;
+    const netBalanceChange = totalFunded - totalExpenses;
 
-    const formattedTotalIncome = totalIncome.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2,});
+    const formattedTotalIncome = totalFunded.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2,});
 
     const formattedTotalExpenses = totalExpenses.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2,});
 
@@ -83,7 +83,7 @@ export default function WalletBalanceCard() {
                             <div className="flex items-center gap-1 text-green-500 text-md font-semibold">
                                 <TrendingUp className="size-4"/>
                                 <p className="flex">
-                                    Total Income
+                                    Total Funded
                                 </p>
                             </div>
 
