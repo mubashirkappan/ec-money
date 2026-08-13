@@ -1,15 +1,6 @@
 import { LucideIcon } from "lucide-react";
 
-export interface DashboardSummary {
-  balance: number;
-  income: number;
-  expense: number;
-  pending: number;
-  transactions: number;
-  monthlyGrowth: number;
-}
-
-export interface QuickAction {
+export interface QuickActionTypes {
   id: number;
   title: string;
   description: string;

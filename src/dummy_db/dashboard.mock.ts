@@ -1,22 +1,12 @@
 import {
-  Landmark, HandCoins, UsersRound
+  Landmark, UsersRound
 } from "lucide-react";
 
 import {
-  DashboardSummary,
-  QuickAction,
+  QuickActionTypes,
 } from "../features/dashboard/types/dashboard.types";
 
-export const summary: DashboardSummary = {
-  balance: 125450,
-  income: 15200,
-  expense: 8400,
-  pending: 4,
-  transactions: 183,
-  monthlyGrowth: 2.5,
-};
-
-export const quickActions: QuickAction[] = [
+export const quickActions: QuickActionTypes[] = [
   {
     id: 1,
     title: "Send Money",

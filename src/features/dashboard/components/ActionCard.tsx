@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
-import { QuickAction } from "../types/dashboard.types";
+import { QuickActionTypes } from "../types/dashboard.types";
 
 interface Props {
-  action: QuickAction;
+  action: QuickActionTypes;
 }
 
 export default function ActionCard({
@@ -11,10 +11,10 @@ export default function ActionCard({
 }: Props) {
 
   return (
-    <Link href={action.href}>
-      <Card className="cursor-pointer p-5 transition-all hover:shadow-lg hover:-translate-y-1 hover:bg-slate-100/20">
-        <div className="space-y-3 grid justify-center items-center text-center">
-          <div className="flex justify-center w-full">
+    <Link href={action.href} className="h-full">
+      <Card className="h-full cursor-pointer p-5 transition-all hover:shadow-lg hover:-translate-y-1 hover:bg-slate-100/20">
+        <div className="flex h-full flex-col items-center justify-center space-y-3 text-center">
+          <div className="flex justify-center items-center w-full">
             <div className="flex items-center justify-center size-12 bg-emerald-100 text-emerald-600 rounded-xl">
               <action.icon className="size-6" />
             </div>

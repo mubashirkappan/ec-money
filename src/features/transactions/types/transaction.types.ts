@@ -1,7 +1,7 @@
 export type TransactionType = "debited" | "credited"
 export type TransactionStatus = "completed" | "cancelled"
 
-export interface Transaction {
+export interface TransactionTypes {
   id: number
   party: string
   amount: number

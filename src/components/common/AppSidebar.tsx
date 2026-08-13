@@ -227,7 +227,7 @@ export function AppSidebar() {
                   asChild
                   tooltip="Beneficiary"
                 >
-                  <Link href="/dashboard/settings">
+                  <Link href="/beneficiaries">
 
                     <UserRoundPlus />
 

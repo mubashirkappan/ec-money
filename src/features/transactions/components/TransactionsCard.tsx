@@ -61,7 +61,10 @@ export default function TransactionsCard() {
         filters.search.trim() === "" ||
         transaction.party
           .toLowerCase()
-          .includes(filters.search.toLowerCase().trim());
+          .includes(filters.search.toLowerCase().trim()) ||
+        transaction.amount
+          .toString()
+          .includes(filters.search.trim());
 
       /*
        * Transaction type

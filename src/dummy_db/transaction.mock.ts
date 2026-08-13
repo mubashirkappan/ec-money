@@ -1,6 +1,6 @@
-import { Transaction } from "@/types/transaction"
+import { TransactionTypes } from "@/features/transactions/types/transaction.types"
 
-export const transactions: Transaction[] = [
+export const transactions: TransactionTypes[] = [
   {
     id: 1,
     party: "Wallet Credit",
