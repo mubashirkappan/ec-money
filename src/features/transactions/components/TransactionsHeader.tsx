@@ -100,6 +100,7 @@ export default function TransactionsHeader({
       <CardContent className="p-0">
         <div className="flex items-end justify-between gap-1">
           <AppSearchInput
+            id="searchTransactions"
             placeholder="Search..."
             className="w-60"
             value={filters.search}

@@ -56,7 +56,7 @@ const AppInput = forwardRef<HTMLInputElement, AppInputProps>(
             id={id}
             {...props}
             className={cn(
-              "h-12 rounded-xl border-slate-200 px-8 text-sm shadow-none",
+              "h-10 rounded-xl border-slate-200 pl-8 pr-4 text-sm shadow-none",
               "placeholder:text-slate-400",
               "focus-visible:border-slate-500 focus-visible:ring-4 focus-visible:ring-slate-500/10 dark:focus-visible:ring-white/10",
               error &&

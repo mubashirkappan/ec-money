@@ -86,6 +86,7 @@ export default function BeneficiaryHeader({
       <CardContent className="p-0">
         <div className="grid md:flex items-end justify-between gap-2">
           <AppSearchInput
+            id="searchBeneficiaries"
             placeholder="Search..."
             className="w-60"
             value={filters.search}

@@ -187,7 +187,7 @@ export function AppSidebar() {
                   asChild
                   tooltip="Transfer Money"
                 >
-                  <Link href="/payments">
+                  <Link href="/payment">
 
                     <CreditCard />
 

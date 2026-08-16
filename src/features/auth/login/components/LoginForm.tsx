@@ -1,9 +1,10 @@
 "use client";
 
-import {useState} from 'react';
 import Link from "next/link";
 import {
+  User2Icon,
   ShieldCheck,
+  LockKeyhole
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -15,7 +16,7 @@ import {
 } from "../schemas/login.schema";
 
 import AppInput from "@/components/common/AppInput";
-import PasswordInput from "@/components/common/PasswordInput";
+import SecureInput from "@/components/common/SecureInput";
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -85,14 +86,16 @@ export default function LoginForm({
         id="username"
         label="Username"
         placeholder="Enter email or mobile number"
+        icon={User2Icon}
         error={errors.email_or_mobile?.message}
         {...register("email_or_mobile")}
       />
 
-      <PasswordInput
+      <SecureInput
         id="password"
         label="Password"
         placeholder="Enter your password"
+        icon={LockKeyhole}
         autoComplete="current-password"
         error={errors.password?.message}
         {...register("password")}
