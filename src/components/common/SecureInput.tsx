@@ -101,15 +101,18 @@ const SecureInput = forwardRef<
                 type="button"
                 variant="ghost"
                 size="icon"
-                onClick={() =>
-                  setShowSecured((value) => !value)
-                }
-                className="absolute right-1 top-1/2 h-10 w-10 -translate-y-1/2 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-700"
-                aria-label={
-                  showSecured
-                    ? "Hide text"
-                    : "Show text"
-                }
+                onClick={() => setShowSecured((value) => !value)}
+                className="
+                  absolute right-1 top-1/2
+                  h-10 w-10
+                  -translate-y-1/2
+                  rounded-lg
+                  text-slate-400
+                  hover:bg-slate-100
+                  hover:text-slate-700
+                  active:translate-y-[-50%]!
+                "
+                aria-label={showSecured ? "Hide text" : "Show text"}
               >
                 {showSecured ? (
                   <EyeOff className="h-4 w-4" />

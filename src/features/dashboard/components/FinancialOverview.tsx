@@ -50,7 +50,7 @@ import {
   getNiceMax,
   getWeekChartData,
   getYearChartData,
-} from "@/features/dashboard/hooks/financialChart";
+} from "@/features/dashboard/lib/financialChart";
 
 import {
   CalendarDays,

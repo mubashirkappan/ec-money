@@ -6,6 +6,7 @@ import "./globals.css";
 import { QueryProvider } from "@/providers";
 
 import { ThemeToggle } from "@/components/layout/theme-toggle";
+import { NotificationIcon } from "@/components/layout/notification";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -26,6 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.variable}>
         <QueryProvider>{children}</QueryProvider>
+        <NotificationIcon />
         <ThemeToggle />
       </body>
     </html>

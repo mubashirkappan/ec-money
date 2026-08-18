@@ -77,7 +77,7 @@ export default function WalletBalanceCard() {
                         </button>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
                         <div className="bg-slate-300/10 p-4 rounded-lg space-y-2">
                             <div className="flex items-center gap-1 text-green-500 text-md font-semibold">
