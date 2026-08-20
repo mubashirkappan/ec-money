@@ -5,3 +5,13 @@ export interface PaymentTypes {
   bankName: string;
   ifscCode: string;
 }
+
+export interface PaymentData {
+  accountNumber: string;
+  confirmAccountNumber: string;
+  ifscCode: string;
+  bankName: string;
+  holderName: string;
+  amount: number;
+  pin: string;
+};

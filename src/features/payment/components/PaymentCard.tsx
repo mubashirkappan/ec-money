@@ -12,7 +12,7 @@ import {
   type IndianRupeeIconHandle,
 } from "lucide-animated";
 
-import PaymentHeader from "./PaymentHeader";
+import { confirmPayment } from "../lib/confirmPayment"
 
 import SecureInput from "@/components/common/SecureInput";
 import AppInput from "@/components/common/AppInput";
@@ -20,7 +20,13 @@ import AppInput from "@/components/common/AppInput";
 import { accountDetails } from "@/dummy_db/bank.mock";
 import { beneficiaries } from "@/dummy_db/beneficiary.mock";
 
-export default function PaymentCard() {
+interface PaymentCardProps {
+  onPaymentSuccess: () => void;
+}
+
+export default function PaymentCard({
+  onPaymentSuccess,
+}: PaymentCardProps) {
   const [accountNumber, setAccountNumber] = useState("");
   const [confirmAccountNumber, setConfirmAccountNumber] = useState("");
 
@@ -117,10 +123,33 @@ export default function PaymentCard() {
       : Number(amount).toLocaleString("en-IN")
     : "";
 
-  return (
-    <>
-      <PaymentHeader />
+  const handleConfirmPayment = () => {
+    if (!pin) {
+      console.log("Invalid Pin");
+      return;
+    }
 
+    const paymentData = {
+      accountNumber: accountNumber,
+      confirmAccountNumber: confirmAccountNumber,
+      ifscCode: ifscCode,
+      bankName: bankName,
+      holderName: holderName,
+      amount: Number(amount),
+      pin: pin,
+    };
+
+    const isPaymentConfirm = confirmPayment(paymentData);
+
+    if (isPaymentConfirm) {
+      console.log("Payment Success");
+      onPaymentSuccess();
+    } else {
+      console.log("Payment Failed");
+    }
+  };
+
+  return (
       <Card className="border-.5 border-slate-200/70 p-5">
         {!toEnterPin ? (
           <CardContent className="p-0 space-y-4">
@@ -254,11 +283,10 @@ export default function PaymentCard() {
                   }
                 }}
               />
-              <Button disabled={!pinConfirmBtn} className="max-w-100 bg-blue-600 h-12 font-bold!">Confirm</Button>
+              <Button disabled={!pinConfirmBtn} className="max-w-100 bg-blue-600 h-12 font-bold!" onClick={handleConfirmPayment}>Confirm</Button>
             </div>
           </CardContent>
         )}
       </Card>
-    </>
   );
 }

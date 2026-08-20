@@ -3,6 +3,7 @@ export type TransactionStatus = "completed" | "cancelled"
 
 export interface TransactionTypes {
   id: number
+  transactionId: string
   party: string
   amount: number
   date: string

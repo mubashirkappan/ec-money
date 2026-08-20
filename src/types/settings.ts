@@ -1,3 +1,3 @@
 export interface SecurityPin {
-  pin: string;
+  pin: number;
 }

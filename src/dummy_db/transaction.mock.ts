@@ -1,10 +1,11 @@
-import { TransactionTypes } from "@/features/transactions/types/transaction.types"
+import { TransactionTypes } from "@/features/transactions/types/transaction.types";
 
 export const transactions: TransactionTypes[] = [
   {
     id: 1,
+    transactionId: "202607010001",
     party: "Wallet Credit",
-    amount: 100000.00,
+    amount: 100000.0,
     date: "1 Jul 2026",
     time: "09:15 AM",
     type: "credited",
@@ -13,8 +14,9 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 2,
+    transactionId: "202607020002",
     party: "Ahmed",
-    amount: 12500.00,
+    amount: 12500.0,
     date: "2 Jul 2026",
     time: "10:32 AM",
     type: "debited",
@@ -23,8 +25,9 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 3,
+    transactionId: "202607030003",
     party: "Sarah",
-    amount: 18500.00,
+    amount: 18500.0,
     date: "3 Jul 2026",
     time: "02:18 PM",
     type: "debited",
@@ -33,8 +36,9 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 4,
+    transactionId: "202607050004",
     party: "Mohammed",
-    amount: 9500.00,
+    amount: 9500.0,
     date: "5 Jul 2026",
     time: "11:45 AM",
     type: "debited",
@@ -43,8 +47,9 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 5,
+    transactionId: "202607070005",
     party: "Fatima",
-    amount: 22000.00,
+    amount: 22000.0,
     date: "7 Jul 2026",
     time: "04:26 PM",
     type: "debited",
@@ -53,8 +58,9 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 6,
+    transactionId: "202607090006",
     party: "Omar",
-    amount: 15000.00,
+    amount: 15000.0,
     date: "9 Jul 2026",
     time: "01:12 PM",
     type: "debited",
@@ -63,8 +69,9 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 7,
+    transactionId: "202607110007",
     party: "Daniel",
-    amount: 18500.00,
+    amount: 18500.0,
     date: "11 Jul 2026",
     time: "06:35 PM",
     type: "debited",
@@ -73,8 +80,9 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 8,
+    transactionId: "202607120008",
     party: "Wallet Credit",
-    amount: 500000.00,
+    amount: 500000.0,
     date: "12 Jul 2026",
     time: "09:05 AM",
     type: "credited",
@@ -83,8 +91,9 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 9,
+    transactionId: "202607130009",
     party: "Aisha",
-    amount: 75000.00,
+    amount: 75000.0,
     date: "13 Jul 2026",
     time: "10:48 AM",
     type: "debited",
@@ -93,8 +102,9 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 10,
+    transactionId: "202607150010",
     party: "Khalid",
-    amount: 42000.00,
+    amount: 42000.0,
     date: "15 Jul 2026",
     time: "03:27 PM",
     type: "debited",
@@ -103,8 +113,9 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 11,
+    transactionId: "202607170011",
     party: "Mariam",
-    amount: 68000.00,
+    amount: 68000.0,
     date: "17 Jul 2026",
     time: "11:16 AM",
     type: "debited",
@@ -113,8 +124,9 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 12,
+    transactionId: "202607190012",
     party: "Yusuf",
-    amount: 55000.00,
+    amount: 55000.0,
     date: "19 Jul 2026",
     time: "05:42 PM",
     type: "debited",
@@ -123,8 +135,9 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 13,
+    transactionId: "202607210013",
     party: "Hassan",
-    amount: 92500.00,
+    amount: 92500.0,
     date: "21 Jul 2026",
     time: "02:08 PM",
     type: "debited",
@@ -133,8 +146,9 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 14,
+    transactionId: "202607230014",
     party: "Noor",
-    amount: 35000.00,
+    amount: 35000.0,
     date: "23 Jul 2026",
     time: "08:21 PM",
     type: "debited",
@@ -143,12 +157,24 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 15,
+    transactionId: "202607250015",
     party: "Bilal",
-    amount: 125000.00,
+    amount: 125000.0,
     date: "25 Jul 2026",
     time: "12:34 PM",
     type: "debited",
     status: "completed",
     note: "Money transfer",
   },
-]
+  {
+    id: 16,
+    transactionId: "202608200016",
+    party: "Wallet Credit",
+    amount: 300000.0,
+    date: "20 Aug 2026",
+    time: "12:59 PM",
+    type: "credited",
+    status: "completed",
+    note: "Credited by Admin",
+  },
+];
