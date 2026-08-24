@@ -190,7 +190,7 @@ export default function FinancialOverview() {
             </CardTitle>
 
             <CardDescription>
-              Income and expenses over time
+              Expenses over time
             </CardDescription>
           </div>
 

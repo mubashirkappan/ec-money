@@ -3,6 +3,7 @@ import AppLayout from "./AppLayout";
 import { SidebarProvider } from "@/components/ui/sidebar"
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AppSidebar } from "@/components/common/AppSidebar"
+import AppNavbar from "@/components/common/AppNavbar"
 
 interface PageContainerProps {
   children: ReactNode;
@@ -15,8 +16,9 @@ export default function PageContainer({
     <AppLayout>
       <TooltipProvider>
         <SidebarProvider>
-          <AppSidebar />
-          <div className="w-full min-w-0 p-4">
+          {/* <AppSidebar /> */}
+          <AppNavbar />
+          <div className="w-full min-w-0 px-4 py-2 mt-16">
             {children}
           </div>
         </SidebarProvider>

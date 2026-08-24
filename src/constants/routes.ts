@@ -1,17 +1,68 @@
 export const ROUTES = {
-  LOGIN: "/login",
+  LOGIN: {
+    path: "/login",
+    userType: "all",
+    displayName: "Login"
+  },
+  
+  FORGOT_PASSWORD: {
+    path: "/fogot-password",
+    userType: "all",
+    displayName: "Fogot Password"
+  },
 
-  REGISTER: "/register",
+  USER_DASHBAORD: {
+    path: "/user-dashboard",
+    userType: "user",
+    displayName: "User Dashboard"
+  },
 
-  FORGOT_PASSWORD: "/forgot-password",
+  ADMIN_DASHBAORD: {
+    path: "/admin-dashboard",
+    userType: "admin",
+    displayName: "Admin Dashboard"
+  },
 
-  DASHBOARD: "/dashboard",
+  CUSTOMERS: {
+    path: "/customers",
+    userType: "admin",
+    displayName: "Customers"
+  },
 
-  PAYMENTS: "/payments",
+  WALLET_CREDIT: {
+    path: "/wallet-credit",
+    userType: "admin",
+    displayName: "Wallet Credit"
+  },
 
-  HISTORY: "/history",
+  SEND_MONEY: {
+    path: "/send-money",
+    userType: "user",
+    displayName: "Send Money"
+  },
 
-  SETTINGS: "/settings",
+  BENEFICIARY: {
+    path: "/beneficiary",
+    userType: "user",
+    displayName: "Beneficiaries"
+  },
 
-  PROFILE: "/settings/profile",
+  TRANSACTIONS: {
+    path: "/transactions",
+    userType: "user",
+    displayName: "Transactions"
+  },
+
+  SETTINGS: {
+    path: "/settings",
+    userType: "all",
+    displayName: "Settings"
+  },
+
+  PROFILE: {
+    path: "/profile",
+    userType: "all",
+    displayName: "Profile"
+  },
+
 } as const;
