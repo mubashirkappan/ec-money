@@ -1,4 +1,4 @@
-import { BeneficairyTypes } from "@/features/beneficiary/types/beneficiary.types";
+import { BeneficairyTypes } from "@/features/user/beneficiary/types/beneficiary.types";
 
 export const beneficiaries: BeneficairyTypes[] = [
   {

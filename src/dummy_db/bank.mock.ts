@@ -1,4 +1,4 @@
-import { PaymentTypes } from "@/features/payment/types/payment.types";
+import { PaymentTypes } from "@/features/user/payment/types/payment.types";
 
 export const accountDetails: PaymentTypes[] = [
   {

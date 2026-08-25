@@ -1,4 +1,4 @@
-import { TransactionTypes } from "@/features/transactions/types/transaction.types";
+import { TransactionTypes } from "@/features/user/transactions/types/transaction.types";
 
 export const transactions: TransactionTypes[] = [
   {

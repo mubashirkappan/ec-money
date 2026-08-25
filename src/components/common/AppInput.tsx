@@ -40,8 +40,7 @@ const AppInput = forwardRef<HTMLInputElement, AppInputProps>(
         {label && (
           <Label
             htmlFor={id}
-            className="text-sm font-medium"
-            style={{ color: colors.text }}
+            className="text-sm font-medium text-slate-700"
           >
             {label}
           </Label>

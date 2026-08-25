@@ -1,5 +1,5 @@
-import {SecurityPin} from "@/types/settings"
+import { SecurityPinTypes } from "@/types/settings.types"
 
-export const securityPin: SecurityPin = { 
+export const securityPin: SecurityPinTypes = { 
   pin: 2468,
 };

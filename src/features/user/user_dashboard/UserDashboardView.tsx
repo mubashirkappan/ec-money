@@ -4,13 +4,13 @@ import PageContainer from "@/components/layout/PageContainer";
 
 
 
-import DashboardHeader from "@/features/dashboard/components/DashboardHeader";
-import WalletBalanceCard from "@/features/dashboard/components/WalletBalanceCard";
-import QuickActions from "@/features/dashboard/components/QuickActions";
-import RecentTransactions from "@/features/dashboard/components/RecentTransactions";
-import FinancialOverview from "@/features/dashboard/components/FinancialOverview";
+import DashboardHeader from "@/features/user/user_dashboard/components/DashboardHeader";
+import WalletBalanceCard from "@/features/user/user_dashboard/components/WalletBalanceCard";
+import QuickActions from "@/features/user/user_dashboard/components/QuickActions";
+import RecentTransactions from "@/features/user/user_dashboard/components/RecentTransactions";
+import FinancialOverview from "@/features/user/user_dashboard/components/FinancialOverview";
 
-export default function DashboardView() {
+export default function UserDashboardView() {
 
   return (
     <PageContainer>

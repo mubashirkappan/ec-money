@@ -130,41 +130,13 @@ export default function LoginForm({
         </Link>
       </div>
 
-      {/* <Button
-        type="submit"
-        disabled={isSubmitting}
-        className="h-12 w-full rounded-xl bg-blue-600 text-sm font-semibold shadow-lg shadow-blue-600/20 transition-all hover:bg-blue-700 hover:shadow-blue-600/30"
-      >
-        {isSubmitting ? (
-          <span className="flex items-center gap-2">
-            <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-            <Loader className="animate-spin h-12 w-12"/> Signing in...
-          </span>
-        ) : (
-          "Sign in"
-        )}
-      </Button> */}
-
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="h-12 w-full rounded-xl bg-blue-600 text-sm font-semibold shadow-lg shadow-blue-600/20 transition-all hover:bg-blue-700 hover:shadow-blue-600/30"
+        className="h-12 w-full rounded-xl bg-blue-600 text-sm font-semibold shadow-lg shadow-blue-600/20 transition-all hover:bg-blue-700 hover:shadow-blue-600/30 text-white"
       >
         Sign in
       </Button>
-
-      <div className="flex items-center justify-center gap-1 pt-2 text-sm">
-        <span className="text-slate-500">
-          Don&rsquo;t have an account?
-        </span>
-
-        <Link
-          href="/register"
-          className="font-semibold text-blue-600 hover:text-blue-700"
-        >
-          Create One
-        </Link>
-      </div>
 
       <div className="flex items-center justify-center gap-2 pt-3 text-xs text-slate-400">
         <ShieldCheck className="h-4 w-4" />

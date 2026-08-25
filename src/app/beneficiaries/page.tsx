@@ -1,4 +1,4 @@
-import BeneficiaryView from "@/features/beneficiary/BeneficiaryView";
+import BeneficiaryView from "@/features/user/beneficiary/BeneficiaryView";
 
 export default function DashboardPage() {
   return <BeneficiaryView />;

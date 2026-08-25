@@ -1,4 +1,4 @@
-import TransactionsView from "@/features/transactions/TransactionsView";
+import TransactionsView from "@/features/user/transactions/TransactionsView";
 
 export default function TransactionsPage() {
   return <TransactionsView />;

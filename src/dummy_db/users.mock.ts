@@ -1,0 +1,43 @@
+import { UserTypes } from "@/types/user.types";
+
+export const users: UserTypes[] = [
+  {
+    id: 1,
+    orgName: "WORLD TRADE TRANSFER PRIVATE LIMITED",
+    username: "superadmin",
+    email: "worldtrade@gmail.com",
+    contact: "2536252425",
+    userType: "superadmin",
+    isActive: true,
+  },
+  {
+    id: 2,
+    profileImg: "/assets/profile/image1.png",
+    username: "John Adam",
+    orgName: "GOODWAY",
+    email: "goodway@gmail.com",
+    contact: "9865326252",
+    dateOfBirth: "1998-11-23",
+    personalAddress: "personal address",
+    orgAddress: "organization address",
+    proofType: "Driving License",
+    proofDoc: "/assets/proofdoc/proofdoc1.pdf",
+    userType: "user",
+    isActive: true,
+  },
+  {
+    id: 3,
+    profileImg: "/assets/profile/image2.jpg",
+    username: "Alex Mejo",
+    orgName: "ROADWAY",
+    email: "roadway@gmail.com",
+    contact: "1425362827",
+    dateOfBirth: "2000-08-24",
+    personalAddress: "personal address",
+    orgAddress: "organization address",
+    proofType: "Aadhaar",
+    proofDoc: "/assets/proofdoc/proofdoc2.jpg",
+    userType: "user",
+    isActive: true,
+  },
+];

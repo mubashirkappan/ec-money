@@ -1,4 +1,5 @@
 export const ROUTES = {
+  // COMMON STARTS
   LOGIN: {
     path: "/login",
     userType: "all",
@@ -11,18 +12,26 @@ export const ROUTES = {
     displayName: "Fogot Password"
   },
 
-  USER_DASHBAORD: {
-    path: "/user-dashboard",
-    userType: "user",
-    displayName: "User Dashboard"
+  SETTINGS: {
+    path: "/settings",
+    userType: "all",
+    displayName: "Settings"
   },
 
-  ADMIN_DASHBAORD: {
-    path: "/admin-dashboard",
-    userType: "admin",
-    displayName: "Admin Dashboard"
+  PROFILE: {
+    path: "/profile",
+    userType: "all",
+    displayName: "Profile"
   },
 
+  DASHBAORD: {
+    path: "/dashboard",
+    userType: "all",
+    displayName: "Dashboard"
+  },
+  // COMMON ENDS
+
+  // ADMIN STARTS
   CUSTOMERS: {
     path: "/customers",
     userType: "admin",
@@ -34,7 +43,9 @@ export const ROUTES = {
     userType: "admin",
     displayName: "Wallet Credit"
   },
+  // ADMIN ENDS
 
+  // USER STARTS
   SEND_MONEY: {
     path: "/send-money",
     userType: "user",
@@ -52,17 +63,6 @@ export const ROUTES = {
     userType: "user",
     displayName: "Transactions"
   },
-
-  SETTINGS: {
-    path: "/settings",
-    userType: "all",
-    displayName: "Settings"
-  },
-
-  PROFILE: {
-    path: "/profile",
-    userType: "all",
-    displayName: "Profile"
-  },
+  // USER ENDS
 
 } as const;

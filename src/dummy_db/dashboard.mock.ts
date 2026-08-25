@@ -4,7 +4,7 @@ import {
 
 import {
   QuickActionTypes,
-} from "../features/dashboard/types/dashboard.types";
+} from "../features/user/user_dashboard/types/dashboard.types";
 
 export const quickActions: QuickActionTypes[] = [
   {

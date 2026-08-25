@@ -49,6 +49,10 @@ import {
 
 import { env } from "@/lib/env";
 
+import { useLogout } from "@/lib/auth/logout";
+
+import { userNavigation, adminNavigation, settingsNavigation, profileNavigation } from "@/config/navigation";
+
 
 /* =========================================================
    ROUTE TYPE
@@ -151,6 +155,8 @@ const MAX_VISIBLE_WITH_MORE = 4;
 ========================================================= */
 
 export default function AppNavbar() {
+
+  const logout = useLogout(); 
 
   const pathname = usePathname();
 
@@ -1038,6 +1044,7 @@ export default function AppNavbar() {
                           <DropdownMenuItem
                             key={route.href}
                             asChild
+                            className="cursor-pointer py-2!"
                           >
 
                             <Link
@@ -1105,7 +1112,7 @@ export default function AppNavbar() {
               className="
                 absolute
                 right-2
-                top-2
+                top-1
                 size-2
                 rounded-full
                 bg-red-500
@@ -1212,7 +1219,7 @@ export default function AppNavbar() {
               <DropdownMenuSeparator />
 
 
-              <DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer">
 
                 <User />
 
@@ -1223,6 +1230,7 @@ export default function AppNavbar() {
 
               <DropdownMenuItem
                 asChild
+                className="cursor-pointer"
               >
 
                 <Link
@@ -1243,8 +1251,9 @@ export default function AppNavbar() {
 
               <DropdownMenuItem
                 className="
-                  text-destructive
+                  text-destructive cursor-pointer
                 "
+                onClick={logout}
               >
 
                 <LogOut />
