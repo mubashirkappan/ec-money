@@ -1,4 +1,4 @@
-export interface UserTypes {
+export interface UserDetailsTypes {
   id: number;
   profileImg?: string;
   username: string;

@@ -10,7 +10,7 @@ import QuickActions from "@/features/user/user_dashboard/components/QuickActions
 import RecentTransactions from "@/features/user/user_dashboard/components/RecentTransactions";
 import FinancialOverview from "@/features/user/user_dashboard/components/FinancialOverview";
 
-export default function DashboardView() {
+export default function AdminDashboardView() {
 
   return (
     <PageContainer>

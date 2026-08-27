@@ -1,12 +1,12 @@
-import { UserTypes } from "@/types/user.types";
+import { UserDetailsTypes } from "@/types/user.types";
 
-export const users: UserTypes[] = [
+export const users: UserDetailsTypes[] = [
   {
     id: 1,
     orgName: "WORLD TRADE TRANSFER PRIVATE LIMITED",
     username: "superadmin",
     email: "worldtrade@gmail.com",
-    contact: "2536252425",
+    contact: "1234567890",
     userType: "superadmin",
     isActive: true,
   },
@@ -16,7 +16,7 @@ export const users: UserTypes[] = [
     username: "John Adam",
     orgName: "GOODWAY",
     email: "goodway@gmail.com",
-    contact: "9865326252",
+    contact: "2468246824",
     dateOfBirth: "1998-11-23",
     personalAddress: "personal address",
     orgAddress: "organization address",

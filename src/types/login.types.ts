@@ -1,7 +1,7 @@
-import { UserTypes } from "./user.types";
+import { UserDetailsTypes } from "./user.types";
 
 export interface LoginTypes {
   id: number;
-  userId: UserTypes;
+  userId: UserDetailsTypes;
   password: string;
 }

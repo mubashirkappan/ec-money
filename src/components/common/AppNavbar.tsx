@@ -51,7 +51,8 @@ import { env } from "@/lib/env";
 
 import { useLogout } from "@/lib/auth/logout";
 
-import { userNavigation, adminNavigation, settingsNavigation, profileNavigation } from "@/config/navigation";
+import { userNavigation, adminNavigation } from "@/config/navigation";
+import { authCookies } from "@/lib/cookies";
 
 
 /* =========================================================
@@ -69,56 +70,56 @@ interface RouteItem {
    ROUTES
 ========================================================= */
 
-const routes: RouteItem[] = [
-  {
-    name: "Dashboard",
-    href: "/dashboard",
-    icon: LayoutDashboard,
-  },
-  {
-    name: "Send Money",
-    href: "/payment",
-    icon: CreditCard,
-  },
-  {
-    name: "Transactions",
-    href: "/transactions",
-    icon: History,
-  },
-  {
-    name: "Beneficiary",
-    href: "/beneficiaries",
-    icon: UserRoundPlus,
-  },
-  {
-    name: "Customers",
-    href: "/customers",
-    icon: UserRoundPlus,
-  },
-  {
-    name: "Wallet Credit",
-    href: "/wallet-credit",
-    icon: UserRoundPlus,
-  },
+// const routes: RouteItem[] = [
+//   {
+//     name: "Dashboard",
+//     href: "/dashboard",
+//     icon: LayoutDashboard,
+//   },
+//   {
+//     name: "Send Money",
+//     href: "/payment",
+//     icon: CreditCard,
+//   },
+//   {
+//     name: "Transactions",
+//     href: "/transactions",
+//     icon: History,
+//   },
+//   {
+//     name: "Beneficiary",
+//     href: "/beneficiaries",
+//     icon: UserRoundPlus,
+//   },
+//   {
+//     name: "Customers",
+//     href: "/customers",
+//     icon: UserRoundPlus,
+//   },
+//   {
+//     name: "Wallet Credit",
+//     href: "/wallet-credit",
+//     icon: UserRoundPlus,
+//   },
 
-  /*
-    Add future routes here.
+//   /*
+//     Add future routes here.
 
-    Example:
+//     Example:
 
-    {
-      name: "Accounts",
-      href: "/accounts",
-      icon: Landmark,
-    },
+//     {
+//       name: "Accounts",
+//       href: "/accounts",
+//       icon: Landmark,
+//     },
 
-    {
-      name: "Reports",
-      href: "/reports",
-      icon: FileText,
-    },
-  */
-];
+//     {
+//       name: "Reports",
+//       href: "/reports",
+//       icon: FileText,
+//     },
+//   */
+// ];
 
 
 /* =========================================================
@@ -160,6 +161,7 @@ export default function AppNavbar() {
 
   const pathname = usePathname();
 
+  const userType = authCookies.getUserType();
 
   /* =========================================================
      REFS
@@ -196,6 +198,10 @@ export default function AppNavbar() {
     This prevents More from incorrectly
     showing everything during the first render.
   */
+
+  const routes = userType === "superadmin"
+      ? adminNavigation
+      : userNavigation;
 
   const [visibleRoutes, setVisibleRoutes] =
     useState<RouteItem[]>(routes);

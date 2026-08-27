@@ -4,7 +4,8 @@ import Link from "next/link";
 import {
   User2Icon,
   ShieldCheck,
-  LockKeyhole
+  LockKeyhole,
+  CircleAlert
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -22,6 +23,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
+import { Login } from "@/features/auth/login/lib/login"
+import { useState } from "react";
+
 interface LoginFormProps {
   onPageLoading: (loading: boolean) => void;
 }
@@ -31,6 +35,8 @@ export default function LoginForm({
 }: LoginFormProps) {
 
   const router = useRouter();
+
+  const [loginError, setLoginError] = useState(false)
 
   const {
     register,
@@ -52,28 +58,32 @@ export default function LoginForm({
   });
 
   async function onSubmit(values: LoginFormValues) {
+    console.log("1. onSubmit");
+
+    setLoginError(false);
     onPageLoading(true);
 
     try {
-      console.log("Frontend login:", values);
+      const loginSuccess = Login({
+        username: values.email_or_mobile,
+        password: values.password,
+        rememberMe: values.rememberMe,
+      });
 
-      // API request here
-      await new Promise((resolve) =>
-        setTimeout(resolve, 1200)
-      );
-
-      const loginSuccess = true; // API result
+      console.log("2. loginSuccess:", loginSuccess);
 
       if (loginSuccess) {
+        console.log("3. SUCCESS");
         router.push("/dashboard");
       } else {
+        console.log("3. FAILED - setting error");
         onPageLoading(false);
-        router.push("/login");
+        setLoginError(true);
       }
     } catch (error) {
-      console.log(error);
+      console.log("ERROR:", error);
       onPageLoading(false);
-      router.push("/login");
+      setLoginError(true);
     }
   }
 
@@ -100,6 +110,13 @@ export default function LoginForm({
         error={errors.password?.message}
         {...register("password")}
       />
+
+      { loginError &&
+        <div className="flex justify-center items-center text-red-600 gap-1">
+          <CircleAlert className="size-5" />
+          <span>Login Failed. Invalid Username or Password!</span>
+        </div>
+      }
 
       <div className="flex items-center justify-between gap-4 pt-1">
         <div className="flex items-center gap-2">

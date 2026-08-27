@@ -34,26 +34,26 @@ export const ROUTES = {
   // ADMIN STARTS
   CUSTOMERS: {
     path: "/customers",
-    userType: "admin",
+    userType: "superadmin",
     displayName: "Customers"
   },
 
   WALLET_CREDIT: {
     path: "/wallet-credit",
-    userType: "admin",
+    userType: "superadmin",
     displayName: "Wallet Credit"
   },
   // ADMIN ENDS
 
   // USER STARTS
   SEND_MONEY: {
-    path: "/send-money",
+    path: "/payment",
     userType: "user",
     displayName: "Send Money"
   },
 
   BENEFICIARY: {
-    path: "/beneficiary",
+    path: "/beneficiaries",
     userType: "user",
     displayName: "Beneficiaries"
   },
