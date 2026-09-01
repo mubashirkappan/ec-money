@@ -4,7 +4,7 @@ export const users: UserDetailsTypes[] = [
   {
     id: 1,
     orgName: "WORLD TRADE TRANSFER PRIVATE LIMITED",
-    username: "superadmin",
+    username: "WTTPL(Admin)",
     email: "worldtrade@gmail.com",
     contact: "1234567890",
     userType: "superadmin",

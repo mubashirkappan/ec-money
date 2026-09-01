@@ -1,8 +1,11 @@
-export type TransactionType = "debited" | "credited"
-export type TransactionStatus = "completed" | "cancelled"
+import { UserDetailsTypes } from "@/types/user.types";
+
+type TransactionType = "debited" | "credited"
+type TransactionStatus = "pending" | "completed" | "cancelled"
 
 export interface TransactionTypes {
   id: number
+  user: UserDetailsTypes
   transactionId: string
   party: string
   amount: number
@@ -10,5 +13,5 @@ export interface TransactionTypes {
   time: string
   type: TransactionType
   status: TransactionStatus
-  note: string
+  note?: string
 }

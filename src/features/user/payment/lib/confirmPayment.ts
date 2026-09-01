@@ -1,11 +1,14 @@
 import { securityPin } from "@/dummy_db/settings.mock";
 import { transactions } from "@/dummy_db/transaction.mock";
 import { PaymentData } from "../types/payment.types"
+import { authCookies } from "@/lib/cookies";
+import {users} from "@/dummy_db/users.mock";
 
 
 function updateTransactionsDb(data: PaymentData) {
   const newTransaction = {
     id: transactions.length + 1,
+    user: users[Number(authCookies.getUserId())],
     transactionId: String(Date.now()),
     party: data.holderName,
     amount: data.amount,

@@ -4,6 +4,10 @@ import { useMemo, useState } from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { transactions } from "@/dummy_db/transaction.mock";
+import { TransactionTypes } from "../types/transaction.types"
+import { TransactionReceiptView } from "./TransactionReceipt"
+
+import  { authCookies } from "@/lib/cookies"
 
 import {
   ArrowDownLeft,
@@ -39,6 +43,11 @@ export default function TransactionsCard() {
     });
   }
 
+  const loginUserId = Number(authCookies.getUserId());
+
+  const [selectedTransaction, setSelectedTransaction] = useState<TransactionTypes | null>(null);
+  const [receiptOpen, setReceiptOpen] = useState(false);
+
   function parseTransactionDate(dateString: string) {
     const date = new Date(dateString);
 
@@ -54,6 +63,9 @@ export default function TransactionsCard() {
    */
   const filteredTransactions = useMemo(() => {
     return transactions.filter((transaction) => {
+
+      const userId = transaction.user.id;
+
       /*
        * Search by party
        */
@@ -119,6 +131,7 @@ export default function TransactionsCard() {
         transactionDate <= toDate;
 
       return (
+        userId === loginUserId &&
         matchesSearch &&
         matchesType &&
         matchesFromAmount &&
@@ -177,6 +190,12 @@ export default function TransactionsCard() {
     };
   }
 
+  function handleViewTransactionReceipt(transaction: TransactionTypes) {
+    console.log(transaction);
+    setSelectedTransaction(transaction);
+    setReceiptOpen(true);
+  }
+
   return (
     <>
       <TransactionsHeader
@@ -190,6 +209,14 @@ export default function TransactionsCard() {
         onApplyFilters={setFilters}
         onClearFilters={handleClearFilters}
       />
+
+      {selectedTransaction && (
+        <TransactionReceiptView
+          transaction={selectedTransaction}
+          open={receiptOpen}
+          onOpenChange={setReceiptOpen}
+        />
+      )}
 
       <Card className="border-.5 border-slate-200/70 p-5">
         <CardContent className="p-0">
@@ -209,15 +236,13 @@ export default function TransactionsCard() {
                   return (
                     <section key={date}>
                       {/* Date Header */}
-                      <div className="border-y border-border bg-slate-300 px-3 py-3">
-                        <p className="space-x-2 text-sm font-semibold text-slate-700">
-                          {formattedDate.date}
-
-                          <span className="text-slate-300">
-                            ·
+                      <div className="bg-indigo-900 px-3 py-3">
+                        <p className="space-x-2 text-sm font-semibold text-white">
+                          <span>
+                            {formattedDate.date}
                           </span>
 
-                          <span className="text-slate-500">
+                          <span>
                             {formattedDate.day}
                           </span>
                         </p>
@@ -225,11 +250,11 @@ export default function TransactionsCard() {
 
                       {/* Transactions */}
                       <ul className="divide-y divide-border">
-                        {dayTransactions.map((t) => {
-                          const transType = t.type;
+                        {dayTransactions.map((transaction) => {
+                          const transType = transaction.type;
 
                           const amount =
-                            t.amount.toLocaleString(
+                            transaction.amount.toLocaleString(
                               "en-IN",
                               {
                                 minimumFractionDigits: 2,
@@ -239,8 +264,9 @@ export default function TransactionsCard() {
 
                           return (
                             <li
-                              key={t.id}
-                              className="flex justify-between px-3 py-3"
+                              key={transaction.id}
+                              className="flex justify-between px-3 py-3 cursor-pointer bg-white hover:bg-indigo-50"
+                              onClick={() => handleViewTransactionReceipt(transaction)}
                             >
                               {/* Left */}
                               <div className="flex max-w-1/2 items-center gap-2">
@@ -257,12 +283,12 @@ export default function TransactionsCard() {
 
                                 <div className="grid min-w-0">
                                   <span className="truncate font-semibold">
-                                    {t.party}
+                                    {transaction.party}
                                   </span>
 
-                                  {t.note && (
+                                  {transaction.note && (
                                     <span className="truncate text-xs text-slate-400">
-                                      {t.note}
+                                      {transaction.note}
                                     </span>
                                   )}
                                 </div>
@@ -287,7 +313,7 @@ export default function TransactionsCard() {
                                 </span>
 
                                 <span className="text-end text-xs text-slate-400">
-                                  {t.time}
+                                  {transaction.time}
                                 </span>
                               </div>
                             </li>
@@ -304,8 +330,4 @@ export default function TransactionsCard() {
       </Card>
     </>
   );
-}
-
-function setFilters(arg0: { search: string; fromDate: string; toDate: string; transactionType: string; fromAmount: string; toAmount: string; }) {
-  throw new Error("Function not implemented.");
 }

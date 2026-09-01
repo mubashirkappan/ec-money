@@ -1,12 +1,16 @@
 import { Wallet } from "lucide-react";
 import { env } from "@/lib/env";
+import Image from "next/image";
+import logo from "@/assets/images/logo.png"
 
 export default function Logo() {
   return (
-    <div className="relative z-10 flex items-center gap-3">
-      <div className="grid place-items-center w-11 h-11 rounded-xl bg-gradient-to-br from-indigo-400 to-emerald-300 shadow-lg shadow-indigo-500/30">
-        <Wallet className="w-6 h-6 text-[#0B0F1A]" />
-      </div>
+    <div className="relative z-10 flex items-center gap-2">
+      <Image
+        src={logo}
+        alt="World Trade Transfer"
+        className="size-16"
+      />
       <span className="text-lg font-semibold tracking-tight">{env.appName}</span>
     </div>
   );

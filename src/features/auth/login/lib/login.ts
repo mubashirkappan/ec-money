@@ -16,7 +16,7 @@ export function Login(loginDataProps: LoginDataProps) {
   );
 
   if (user) {
-    authCookies.setAuthCookies(user.userId.contact, user.userId.userType);
+    authCookies.setAuthCookies(user.userId.username, user.userId.email, user.userId.userType, user.userId.id.toString());
     console.log("Login successful");
     return true
   } else {

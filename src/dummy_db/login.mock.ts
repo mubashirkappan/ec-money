@@ -10,11 +10,11 @@ export const loginData: LoginTypes[] = [
   {
     id: 2,
     userId: users[1],
-    password: "246824",
+    password: "123456",
   },
   {
     id: 3,
     userId: users[2],
-    password: "135796",
+    password: "123456",
   },
 ]

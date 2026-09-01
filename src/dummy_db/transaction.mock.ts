@@ -1,8 +1,11 @@
 import { TransactionTypes } from "@/features/user/transactions/types/transaction.types";
 
+import { users } from "./users.mock";
+
 export const transactions: TransactionTypes[] = [
   {
     id: 1,
+    user: users[1],
     transactionId: "202607010001",
     party: "Wallet Credit",
     amount: 100000.0,
@@ -14,6 +17,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 2,
+    user: users[1],
     transactionId: "202607020002",
     party: "Ahmed",
     amount: 12500.0,
@@ -25,6 +29,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 3,
+    user: users[1],
     transactionId: "202607030003",
     party: "Sarah",
     amount: 18500.0,
@@ -36,6 +41,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 4,
+    user: users[1],
     transactionId: "202607050004",
     party: "Mohammed",
     amount: 9500.0,
@@ -47,6 +53,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 5,
+    user: users[1],
     transactionId: "202607070005",
     party: "Fatima",
     amount: 22000.0,
@@ -58,6 +65,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 6,
+    user: users[1],
     transactionId: "202607090006",
     party: "Omar",
     amount: 15000.0,
@@ -69,6 +77,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 7,
+    user: users[1],
     transactionId: "202607110007",
     party: "Daniel",
     amount: 18500.0,
@@ -80,6 +89,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 8,
+    user: users[1],
     transactionId: "202607120008",
     party: "Wallet Credit",
     amount: 500000.0,
@@ -91,6 +101,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 9,
+    user: users[1],
     transactionId: "202607130009",
     party: "Aisha",
     amount: 75000.0,
@@ -102,6 +113,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 10,
+    user: users[2],
     transactionId: "202607150010",
     party: "Khalid",
     amount: 42000.0,
@@ -113,6 +125,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 11,
+    user: users[2],
     transactionId: "202607170011",
     party: "Mariam",
     amount: 68000.0,
@@ -124,6 +137,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 12,
+    user: users[2],
     transactionId: "202607190012",
     party: "Yusuf",
     amount: 55000.0,
@@ -135,6 +149,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 13,
+    user: users[2],
     transactionId: "202607210013",
     party: "Hassan",
     amount: 92500.0,
@@ -146,6 +161,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 14,
+    user: users[2],
     transactionId: "202607230014",
     party: "Noor",
     amount: 35000.0,
@@ -157,6 +173,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 15,
+    user: users[2],
     transactionId: "202607250015",
     party: "Bilal",
     amount: 125000.0,
@@ -168,6 +185,7 @@ export const transactions: TransactionTypes[] = [
   },
   {
     id: 16,
+    user: users[2],
     transactionId: "202608200016",
     party: "Wallet Credit",
     amount: 300000.0,

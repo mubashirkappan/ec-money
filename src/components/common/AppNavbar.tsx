@@ -5,14 +5,10 @@ import { usePathname } from "next/navigation";
 import {
   Bell,
   ChevronDown,
-  CreditCard,
-  History,
-  LayoutDashboard,
   LogOut,
   Menu,
   Settings,
   User,
-  UserRoundPlus,
   Wallet,
 } from "lucide-react";
 
@@ -53,6 +49,8 @@ import { useLogout } from "@/lib/auth/logout";
 
 import { userNavigation, adminNavigation } from "@/config/navigation";
 import { authCookies } from "@/lib/cookies";
+import Image from "next/image";
+import logo from "@/assets/images/logo.png"
 
 
 /* =========================================================
@@ -162,6 +160,10 @@ export default function AppNavbar() {
   const pathname = usePathname();
 
   const userType = authCookies.getUserType();
+
+  const userName = authCookies.getUsername();
+
+  const userEmail = authCookies.getEmail();
 
   /* =========================================================
      REFS
@@ -900,8 +902,13 @@ export default function AppNavbar() {
               gap-2
             "
           >
+            <Image
+              src={logo}
+              alt="World Trade Transfer"
+              className="size-12"
+            />
 
-            <div
+            {/* <div
               className="
                 flex
                 size-9
@@ -920,7 +927,7 @@ export default function AppNavbar() {
                 className="size-5"
               />
 
-            </div>
+            </div> */}
 
 
             <span
@@ -1180,9 +1187,10 @@ export default function AppNavbar() {
                       text-sm
                       font-medium
                       leading-none
+                      text-end
                     "
                   >
-                    Adam
+                    {userName}
                   </p>
 
 
@@ -1193,7 +1201,7 @@ export default function AppNavbar() {
                       text-muted-foreground
                     "
                   >
-                    adam@example.com
+                    {userEmail}
                   </p>
 
                 </div>
