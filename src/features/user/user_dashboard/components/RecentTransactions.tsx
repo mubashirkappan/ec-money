@@ -4,10 +4,15 @@ import { transactions } from "@/dummy_db/transaction.mock"
 import { ArrowDownLeft, ArrowUpRight, ArrowRight } from 'lucide-react'
 
 import { cn } from "@/lib/utils";
+import { authCookies } from "@/lib/cookies";
+import { formatCurrency } from "@/utils/formatCurrency";
 
 export default function RecentTransactions() {
 
+  const userId = Number(authCookies.getUserId());
+
   const recentTransactions = [...transactions]
+    .filter((transaction) => transaction.user.id === userId)
     .sort(
       (a, b) =>
         new Date(`${b.date} ${b.time}`).getTime() -
@@ -35,11 +40,19 @@ export default function RecentTransactions() {
       <CardContent className="p-0">
         <ul className="divide-y divide-border">
 
-          {recentTransactions.map((t) => {
-            const transType = t.type;
-            const amount = t.amount.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2,});
+          {recentTransactions.map((transaction) => {
+            console.log(
+              "transaction user:",
+              transaction.user.id,
+              "current user:",
+              userId,
+              "transaction:",
+              transaction
+            );
+            const transType = transaction.type;
+            const amount = formatCurrency(transaction.amount);
             return(
-              <li key={t.id} className="py-2 flex justify-between">
+              <li key={transaction.id} className="py-2 flex justify-between">
 
                 <div className="flex gap-2 items-center max-w-1/2">
 
@@ -49,8 +62,8 @@ export default function RecentTransactions() {
                   }
 
                   <div className="grid">
-                    <span className="font-semibold">{t.party}</span>
-                    <span className="text-slate-400 text-xs">{t.note}</span>
+                    <span className="font-semibold">{transaction.party}</span>
+                    <span className="text-slate-400 text-xs">{transaction.note}</span>
                   </div>
 
                 </div>
@@ -64,7 +77,7 @@ export default function RecentTransactions() {
                   )}>
                     { transType === "credited" ? "+" : "-"} ₹{amount}
                   </span>
-                  <span className="text-slate-400 text-xs text-end">{t.date} {t.time}</span>
+                  <span className="text-slate-400 text-xs text-end">{transaction.date} {transaction.time}</span>
                 </div>
                 
               </li>

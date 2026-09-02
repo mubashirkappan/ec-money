@@ -4,6 +4,7 @@ import { transactions } from "@/dummy_db/transaction.mock"
 import { ArrowDownLeft, ArrowUpRight, ArrowRight } from 'lucide-react'
 
 import { cn } from "@/lib/utils";
+import { formatCurrency } from "@/utils/formatCurrency";
 
 export default function RecentTransactions() {
 
@@ -37,7 +38,7 @@ export default function RecentTransactions() {
 
           {recentTransactions.map((t) => {
             const transType = t.type;
-            const amount = t.amount.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2,});
+            const amount = formatCurrency(t.amount);
             return(
               <li key={t.id} className="py-2 flex justify-between">
 

@@ -1,7 +1,7 @@
 import { UserDetailsTypes } from "@/types/user.types";
 
 type TransactionType = "debited" | "credited"
-type TransactionStatus = "pending" | "completed" | "cancelled"
+type TransactionStatus = "Pending" | "Success" | "Cancelled"
 
 export interface TransactionTypes {
   id: number
@@ -9,6 +9,7 @@ export interface TransactionTypes {
   transactionId: string
   party: string
   amount: number
+  toAccountNumber: string
   date: string
   time: string
   type: TransactionType

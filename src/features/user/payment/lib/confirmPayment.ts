@@ -12,6 +12,7 @@ function updateTransactionsDb(data: PaymentData) {
     transactionId: String(Date.now()),
     party: data.holderName,
     amount: data.amount,
+    toAccountNumber: data.accountNumber,
     date: new Date().toLocaleDateString("en-GB", {
       day: "numeric",
       month: "short",
@@ -22,7 +23,7 @@ function updateTransactionsDb(data: PaymentData) {
       minute: "2-digit",
     }),
     type: "debited" as const,
-    status: "completed" as const,
+    status: "Success" as const,
     note: "Money transfer",
   };
 

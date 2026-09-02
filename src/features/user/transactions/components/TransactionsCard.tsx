@@ -19,6 +19,7 @@ import TransactionsHeader, {
 } from "./TransactionsHeader";
 
 import { cn } from "@/lib/utils";
+import { formatCurrency } from "@/utils/formatCurrency";
 
 export default function TransactionsCard() {
   const [filters, setFilters] =
@@ -254,13 +255,7 @@ export default function TransactionsCard() {
                           const transType = transaction.type;
 
                           const amount =
-                            transaction.amount.toLocaleString(
-                              "en-IN",
-                              {
-                                minimumFractionDigits: 2,
-                                maximumFractionDigits: 2,
-                              }
-                            );
+                            formatCurrency(transaction.amount);
 
                           return (
                             <li

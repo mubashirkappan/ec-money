@@ -11,13 +11,14 @@ import {
 import { Wallet, TrendingUp, TrendingDown, Eye, EyeOff } from "lucide-react";
 
 import { transactions } from "@/dummy_db/transaction.mock";
+import { formatCurrency } from "@/utils/formatCurrency";
 
 export default function WalletBalanceCard() {
 
     const [showBalance, setShowBalance] = useState(false);
 
     const completedTransactions = transactions.filter(
-        (transaction) => transaction.status === "completed"
+        (transaction) => transaction.status === "Success"
     );
 
     const totalFunded = completedTransactions
@@ -30,11 +31,11 @@ export default function WalletBalanceCard() {
 
     const netBalanceChange = totalFunded - totalExpenses;
 
-    const formattedTotalIncome = totalFunded.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2,});
+    const formattedTotalIncome = formatCurrency(totalFunded);
 
-    const formattedTotalExpenses = totalExpenses.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2,});
+    const formattedTotalExpenses = formatCurrency(totalExpenses);
 
-    const netBalance = netBalanceChange.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2,});
+    const netBalance = formatCurrency(netBalanceChange);
 
     return (
         <Card className="bg-linear-to-br from-emerald-950 via-slate-900 to-indigo-950 p-5">
