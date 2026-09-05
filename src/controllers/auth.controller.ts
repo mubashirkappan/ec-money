@@ -1,0 +1,7 @@
+import bcrypt from 'bcryptjs'; import jwt from 'jsonwebtoken'; import { z } from 'zod'; import type { Request, Response } from 'express';
+import { pool } from '../db/client.js'; import { env } from '../config.js';
+const userSchema=z.object({name:z.string().min(2),email:z.string().email(),password:z.string().min(8)});
+async function createUser(req:Request,res:Response,role:'OWNER'|'SHOP'){const d=userSchema.parse(req.body);const hash=await bcrypt.hash(d.password,12);try{const u=await pool.query('INSERT INTO users(name,email,password_hash,role) VALUES($1,$2,$3,$4) RETURNING id,name,email,role',[d.name,d.email,hash,role]);await pool.query('INSERT INTO wallets(user_id) VALUES($1)',[u.rows[0].id]);res.status(201).json(u.rows[0]);}catch{res.status(409).json({error:'Email already exists'});}}
+export const registerOwner=(req:Request,res:Response)=>createUser(req,res,'OWNER');
+export const createShop=(req:Request,res:Response)=>createUser(req,res,'SHOP');
+export async function login(req:Request,res:Response){const d=z.object({email:z.string().email(),password:z.string()}).parse(req.body);const r=await pool.query('SELECT * FROM users WHERE email=$1',[d.email]);if(!r.rowCount||!await bcrypt.compare(d.password,r.rows[0].password_hash))return res.status(401).json({error:'Invalid email or password'});const u=r.rows[0];res.json({token:jwt.sign({sub:u.id,role:u.role},env.JWT_SECRET,{expiresIn:'8h'}),user:{id:u.id,name:u.name,role:u.role}});}
