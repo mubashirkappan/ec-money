@@ -3,8 +3,6 @@ import { BeneficairyTypes } from "@/features/user/beneficiary/types/beneficiary.
 export const beneficiaries: BeneficairyTypes[] = [
   {
     id: 1,
-    customerContact: "9876543210",
-    customerName: "Ahmed Khan",
     accountHolderName: "Ahmed Khan",
     accountNumber: "458712369045",
     bankName: "HDFC Bank",
@@ -14,8 +12,6 @@ export const beneficiaries: BeneficairyTypes[] = [
   },
   {
     id: 2,
-    customerContact: "9876543210",
-    customerName: "Ahmed Khan",
     accountHolderName: "Sarah Khan",
     accountNumber: "672341895026",
     bankName: "State Bank of India",
@@ -25,8 +21,6 @@ export const beneficiaries: BeneficairyTypes[] = [
   },
   {
     id: 3,
-    customerContact: "8765432109",
-    customerName: "John Mathew",
     accountHolderName: "John Mathew",
     accountNumber: "391284756103",
     bankName: "ICICI Bank",
@@ -36,8 +30,6 @@ export const beneficiaries: BeneficairyTypes[] = [
   },
   {
     id: 4,
-    customerContact: "8765432109",
-    customerName: "John Mathew",
     accountHolderName: "Mathew Trading Co.",
     accountNumber: "805623417912",
     bankName: "Axis Bank",
@@ -47,8 +39,6 @@ export const beneficiaries: BeneficairyTypes[] = [
   },
   {
     id: 5,
-    customerContact: "7654321098",
-    customerName: "Sarah Thomas",
     accountHolderName: "David Thomas",
     accountNumber: "214578963025",
     bankName: "Kotak Mahindra Bank",
@@ -58,8 +48,6 @@ export const beneficiaries: BeneficairyTypes[] = [
   },
   {
     id: 6,
-    customerContact: "9988776655",
-    customerName: "David Wilson",
     accountHolderName: "David Wilson",
     accountNumber: "936741258064",
     bankName: "Federal Bank",
@@ -69,8 +57,6 @@ export const beneficiaries: BeneficairyTypes[] = [
   },
   {
     id: 7,
-    customerContact: "8899011223",
-    customerName: "Emily Joseph",
     accountHolderName: "Robert Joseph",
     accountNumber: "547896321078",
     bankName: "Canara Bank",
@@ -80,8 +66,6 @@ export const beneficiaries: BeneficairyTypes[] = [
   },
   {
     id: 8,
-    customerContact: "8899011223",
-    customerName: "Emily Joseph",
     accountHolderName: "Emily Joseph",
     accountNumber: "781236945012",
     bankName: "Punjab National Bank",
@@ -91,8 +75,6 @@ export const beneficiaries: BeneficairyTypes[] = [
   },
   {
     id: 9,
-    customerContact: "7788900112",
-    customerName: "James Wilson",
     accountHolderName: "James Wilson",
     accountNumber: "624813579026",
     bankName: "HDFC Bank",
@@ -102,8 +84,6 @@ export const beneficiaries: BeneficairyTypes[] = [
   },
   {
     id: 10,
-    customerContact: "6677899001",
-    customerName: "Olivia George",
     accountHolderName: "George Family Trust",
     accountNumber: "315792468024",
     bankName: "ICICI Bank",

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { beneficiaries } from "@/dummy_db/beneficiary.mock";
 
 import BeneficiaryHeader, {
@@ -10,8 +11,13 @@ import BeneficiaryHeader, {
 } from "./BeneficiaryHeader";
 
 import { cn } from "@/lib/utils";
+import { Eye, EyeOff } from "lucide-react";
+
+import { useRouter } from "next/navigation";
 
 export default function BeneficiaryCard() {
+  const router = useRouter();
+  
   const [filters, setFilters] =
     useState<BeneficiaryFilters>({
       search: "",
@@ -66,15 +72,9 @@ export default function BeneficiaryCard() {
 
       const matchesSearch =
         search === "" ||
-        beneficiary.customerName
-          .toLowerCase()
-          .includes(search) ||
         beneficiary.accountHolderName
           .toLowerCase()
-          .includes(search) ||
-        beneficiary.customerContact
-          .toString()
-          .includes(filters.search.trim());
+          .includes(search)
 
       /*
        * Status
@@ -171,6 +171,8 @@ export default function BeneficiaryCard() {
     };
   }
 
+  const [showAccountNumber, setShowAccountNumber] = useState<number | null>(null);
+
   return (
     <>
       <BeneficiaryHeader
@@ -193,15 +195,19 @@ export default function BeneficiaryCard() {
               <thead>
                 <tr className="border-b border-border">
                   <th className="px-3 py-3 text-left text-sm font-semibold text-slate-600">
-                    Customer Contact
-                  </th>
-
-                  <th className="px-3 py-3 text-left text-sm font-semibold text-slate-600">
-                    Customer Name
-                  </th>
-
-                  <th className="px-3 py-3 text-left text-sm font-semibold text-slate-600">
                     Account Holder
+                  </th>
+
+                  <th className="px-3 py-3 text-left text-sm font-semibold text-slate-600">
+                    Account Number
+                  </th>
+                  
+                  <th className="px-3 py-3 text-left text-sm font-semibold text-slate-600">
+                    Bank Name
+                  </th>
+                  
+                  <th className="px-3 py-3 text-left text-sm font-semibold text-slate-600">
+                    IFSC Code
                   </th>
 
                   <th className="px-3 py-3 text-left text-sm font-semibold text-slate-600">
@@ -210,6 +216,10 @@ export default function BeneficiaryCard() {
 
                   <th className="px-3 py-3 text-center text-sm font-semibold text-slate-600">
                     Status
+                  </th>
+                  
+                  <th className="px-3 py-3 text-center text-sm font-semibold text-slate-600">
+                    Actions
                   </th>
                 </tr>
               </thead>
@@ -237,29 +247,57 @@ export default function BeneficiaryCard() {
                           key={beneficiary.id}
                           className="transition-colors hover:bg-slate-50"
                         >
-                          {/* Customer Contact */}
-                          <td className="px-3 py-4">
-                            <span className="font-medium">
-                              {
-                                beneficiary.customerContact
-                              }
-                            </span>
-                          </td>
-
-                          {/* Customer Name */}
-                          <td className="px-3 py-4">
-                            <span className="font-semibold">
-                              {
-                                beneficiary.customerName
-                              }
-                            </span>
-                          </td>
-
                           {/* Account Holder */}
                           <td className="px-3 py-4">
                             <span className="text-slate-700">
                               {
                                 beneficiary.accountHolderName
+                              }
+                            </span>
+                          </td>
+                          
+                          {/* Account Number */}
+                          <td className="px-3 py-4">
+                            <div className="flex items-center gap-1">
+                              <span className="text-slate-700">
+                                { showAccountNumber === beneficiary.id
+                                  ? beneficiary.accountNumber
+                                  : "xxxxxxxx"
+                                }
+                              </span>
+                              <button
+                              type="button"
+                              onClick={() =>
+                                setShowAccountNumber((prev) =>
+                                  prev === beneficiary.id ? null : beneficiary.id
+                                )
+                              }
+                              className="transition hover:text-slate-500"
+                              aria-label={showAccountNumber === beneficiary.id ? "Hide account number" : "Show account number"}
+                              >
+                                  {showAccountNumber === beneficiary.id ? (
+                                      <EyeOff className="h-5 w-5" />
+                                  ) : (
+                                      <Eye className="h-5 w-5" />
+                                  )}
+                              </button>
+                            </div>
+                          </td>
+                          
+                          {/* Bank Name */}
+                          <td className="px-3 py-4">
+                            <span className="text-slate-700">
+                              {
+                                beneficiary.bankName
+                              }
+                            </span>
+                          </td>
+
+                          {/* IFSC Code */}
+                          <td className="px-3 py-4">
+                            <span className="text-slate-700">
+                              {
+                                beneficiary.ifscCode
                               }
                             </span>
                           </td>
@@ -291,6 +329,18 @@ export default function BeneficiaryCard() {
                                 ? "Active"
                                 : "Inactive"}
                             </span>
+                          </td>
+
+                          {/* Actions */}
+                          <td className="px-3 py-4 text-center">
+                            <Button
+                              className="text-sm font-medium"
+                              onClick={() => {
+                                router.push(`/payment?beneficiaryId=${beneficiary.id}`);
+                              }}
+                            >
+                              Send Money
+                            </Button>
                           </td>
                         </tr>
                       );

@@ -1,7 +1,7 @@
 "use client";
 
 import { notFound } from "next/navigation";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { authCookies } from "@/lib/cookies";
 import { useLogout } from "@/lib/auth/logout";
@@ -16,8 +16,11 @@ export default function RoleGuard({
   allowedRole,
   children,
 }: RoleGuardProps) {
-  const userType = authCookies.getUserType();
-  const accessToken = authCookies.getAccessToken();
+  const [accessToken] = useState(() => authCookies.getAccessToken());
+  const [userType] = useState(
+    () => authCookies.getUserType() as UserRole | null
+  );
+
   const logout = useLogout();
 
   useEffect(() => {
@@ -31,7 +34,7 @@ export default function RoleGuard({
   }
 
   const isAllowed = Array.isArray(allowedRole)
-    ? allowedRole.includes(userType as "superadmin" | "user")
+    ? allowedRole.includes(userType as UserRole)
     : userType === allowedRole;
 
   if (!isAllowed) {

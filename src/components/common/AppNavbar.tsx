@@ -846,43 +846,6 @@ export default function AppNavbar() {
                   }
                 )}
 
-
-                {/* Settings */}
-
-                <Link
-                  href="/dashboard/settings"
-                  className={`
-                    flex
-                    items-center
-                    gap-3
-                    rounded-md
-                    px-3
-                    py-2.5
-                    text-sm
-                    font-medium
-                    transition-colors
-                    hover:bg-accent
-                    hover:text-accent-foreground
-                    ${
-                      pathname.startsWith(
-                        "/dashboard/settings"
-                      )
-                        ? "bg-accent text-accent-foreground"
-                        : "text-muted-foreground"
-                    }
-                  `}
-                >
-
-                  <Settings
-                    className="size-5"
-                  />
-
-                  <span>
-                    Settings
-                  </span>
-
-                </Link>
-
               </nav>
 
             </SheetContent>
