@@ -1,3 +1,5 @@
+"use client";
+
 import { authCookies } from "@/lib/cookies";
 
 export default function DashboardHeader() {

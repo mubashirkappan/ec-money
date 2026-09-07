@@ -1,3 +1,5 @@
+"use client";
+
 import { securityPin } from "@/dummy_db/settings.mock";
 import { transactions } from "@/dummy_db/transaction.mock";
 import { PaymentData } from "../types/payment.types"

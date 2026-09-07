@@ -1,3 +1,5 @@
+"use client";
+
 import UserDashboardView from "@/features/user/user_dashboard/UserDashboardView";
 import AdminDashboardView from "@/features/admin/admin_dashboard/AdminDashboardView";
 import { authCookies } from "@/lib/cookies";

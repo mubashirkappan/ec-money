@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Card, CardTitle, CardContent } from "@/components/ui/card";
 import { transactions } from "@/dummy_db/transaction.mock"

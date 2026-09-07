@@ -9,7 +9,6 @@ import {
   Menu,
   Settings,
   User,
-  Wallet,
 } from "lucide-react";
 
 import {

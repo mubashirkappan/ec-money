@@ -1,3 +1,5 @@
+"use client";
+
 import { loginData } from "@/dummy_db/login.mock";
 import { authCookies } from "@/lib/cookies"
 

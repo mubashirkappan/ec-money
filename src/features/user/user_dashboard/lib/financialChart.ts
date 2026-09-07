@@ -83,7 +83,7 @@ export function getYearChartData(): ChartData[] {
               date.getFullYear() ===
                 year &&
               transaction.status ===
-                "completed"
+                "Success"
             );
           }
         );
@@ -138,7 +138,7 @@ export function getMonthChartData(
               date.getMonth() ===
                 index &&
               transaction.status ===
-                "completed"
+                "Success"
             );
           }
         );
@@ -345,7 +345,7 @@ export function getWeekChartData(
               date.getDate() ===
                 currentDate.getDate() &&
               transaction.status ===
-                "completed"
+                "Success"
             );
           }
         );
@@ -408,7 +408,7 @@ export function getDayChartData(
               date.getDate() ===
                 selectedDate.getDate() &&
               transaction.status ===
-                "completed"
+                "Success"
             );
           }
         );

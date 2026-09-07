@@ -213,6 +213,16 @@ export default function PaymentCard({
       return;
     }
 
+    // Don't allow multiple leading zeros
+    if (/^00+/.test(rawValue)) {
+      return;
+    }
+
+    // Don't allow a number like 01, 02, 012, etc.
+    if (/^0\d/.test(rawValue)) {
+      return;
+    }
+
     setAmount(rawValue);
   };
 
@@ -391,6 +401,7 @@ export default function PaymentCard({
               disabled={
                 !showAmountDiv ||
                 !amount ||
+                Number(amount) <= 0 ||
                 isVerifying
               }
             >
