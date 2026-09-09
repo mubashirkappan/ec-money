@@ -15,6 +15,8 @@ function updateTransactionsDb(data: PaymentData) {
     party: data.holderName,
     amount: data.amount,
     toAccountNumber: data.accountNumber,
+    bankName: data.bankName,
+    ifscCode: data.ifscCode,
     date: new Date().toLocaleDateString("en-GB", {
       day: "numeric",
       month: "short",

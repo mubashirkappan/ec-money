@@ -142,21 +142,33 @@ export function TransactionReceiptView({
                 <span className="text-slate-500">{transaction.transactionId}</span>
               </div>
 
-              <div className="p-2 space-y-2">
-                <div><span className="font-bold">Send To</span></div>
-                <div className="flex justify-between">
-                  <span className="font-medium">Banking Name</span>
-                  <span className="text-slate-500">{transaction.party?.toUpperCase()}</span>
+              { transaction.type === "debited"
+                ? (
+                  <div className="p-2 space-y-2">
+                    <div><span className="font-bold">Send To</span></div>
+                    <div className="flex justify-between">
+                      <span className="font-medium">Banking Name</span>
+                      <span className="text-slate-500">{transaction.party?.toUpperCase()}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="font-medium">Account Number</span>
+                      <span className="text-slate-500">{transaction.toAccountNumber}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="font-medium">Bank</span>
+                      <span className="text-slate-500 whitespace-normal text-end">{transaction.bankName}</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-2 space-y-2">
+                  <div><span className="font-bold">From</span></div>
+                  <div className="flex justify-between">
+                    <span className="font-medium">Admin</span>
+                    <span className="text-slate-500">{transaction.party?.toUpperCase()}</span>
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">Account Number</span>
-                  <span className="text-slate-500">{transaction.toAccountNumber}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">Bank</span>
-                  <span className="text-slate-500 whitespace-normal text-end">State Bank Of India, Vengara Kerala</span>
-                </div>
-              </div>
+                )}
+
 
             </div>
           </div>

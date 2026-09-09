@@ -9,7 +9,9 @@ export interface TransactionTypes {
   transactionId: string
   party: string
   amount: number
-  toAccountNumber: string
+  toAccountNumber?: string
+  bankName?: string
+  ifscCode?: string
   date: string
   time: string
   type: TransactionType
