@@ -9,6 +9,7 @@ import PaymentSuccess from "./components/PaymentSuccess";
 
 export default function PaymentView() {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [dbUpdatedId, setDbUpdatedId] = useState<number | null>(null);
 
   return (
     <PageContainer>
@@ -16,10 +17,13 @@ export default function PaymentView() {
         <PaymentHeader />
 
         {!paymentSuccess && (
-          <PaymentCard onPaymentSuccess={() => setPaymentSuccess(true)} />
+          <PaymentCard onPaymentSuccess={(dbUpdateId: number) => {
+            setDbUpdatedId(dbUpdateId);
+            setPaymentSuccess(true);
+          }} />
         )}
 
-        {paymentSuccess && <PaymentSuccess />}
+        {paymentSuccess && <PaymentSuccess dbUpdatedId={dbUpdatedId} />}
       </div>
     </PageContainer>
   );

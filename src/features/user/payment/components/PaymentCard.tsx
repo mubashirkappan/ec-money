@@ -27,7 +27,7 @@ import { accountDetails } from "@/dummy_db/bank.mock";
 import { beneficiaries } from "@/dummy_db/beneficiary.mock";
 
 interface PaymentCardProps {
-  onPaymentSuccess: () => void;
+  onPaymentSuccess: (data: number) => void;
 }
 
 export default function PaymentCard({
@@ -59,6 +59,7 @@ export default function PaymentCard({
   const [holderName, setHolderName] = useState("");
   const [amount, setAmount] = useState("");
   const [pin, setPin] = useState("");
+  const [transactionId, setTransactionId] = useState("2100325333625");
 
   const [isVerifying, setIsVerifying] = useState(false);
   const [isDataFound, setIsDataFound] = useState(true);
@@ -250,7 +251,10 @@ export default function PaymentCard({
       return;
     }
 
+    setTransactionId(String(Date.now()));
+
     const paymentData = {
+      transactionId: transactionId,
       accountNumber: accountNumber,
       confirmAccountNumber: confirmAccountNumber,
       ifscCode: ifscCode,
@@ -260,12 +264,11 @@ export default function PaymentCard({
       pin: pin,
     };
 
-    const isPaymentConfirm =
-      confirmPayment(paymentData);
+    const PaymentConfirming = confirmPayment(paymentData);
 
-    if (isPaymentConfirm) {
+    if (PaymentConfirming) {
       console.log("Payment Success");
-      onPaymentSuccess();
+      onPaymentSuccess(PaymentConfirming);
     } else {
       console.log("Payment Failed");
     }

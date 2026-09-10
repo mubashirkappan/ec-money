@@ -2,16 +2,16 @@
 
 import { securityPin } from "@/dummy_db/settings.mock";
 import { transactions } from "@/dummy_db/transaction.mock";
-import { PaymentData } from "../types/payment.types"
+import { TransactionData } from "../types/payment.types"
 import { authCookies } from "@/lib/cookies";
 import {users} from "@/dummy_db/users.mock";
 
 
-function updateTransactionsDb(data: PaymentData) {
+function updateTransactionsDb(data: TransactionData) {
   const newTransaction = {
     id: transactions.length + 1,
     user: users[Number(authCookies.getUserId())],
-    transactionId: String(Date.now()),
+    transactionId: data.transactionId,
     party: data.holderName,
     amount: data.amount,
     toAccountNumber: data.accountNumber,
@@ -32,18 +32,20 @@ function updateTransactionsDb(data: PaymentData) {
   };
 
   transactions.push(newTransaction);
+
+  return newTransaction.id;
 }
 
 function verifyPaymentPin(pin: string) {
   return pin === String(securityPin.pin);
 }
 
-export function confirmPayment(data: PaymentData) {
+export function confirmPayment(data: TransactionData) {
   const isPinVerified = verifyPaymentPin(data.pin);
 
   if (isPinVerified) {
-    updateTransactionsDb(data);
-    return true;
+    const dbUpdateId = updateTransactionsDb(data);
+    return dbUpdateId;
   }
 
   return false;

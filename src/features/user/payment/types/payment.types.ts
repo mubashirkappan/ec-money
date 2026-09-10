@@ -6,7 +6,8 @@ export interface PaymentTypes {
   ifscCode: string;
 }
 
-export interface PaymentData {
+export interface TransactionData {
+  transactionId: string;
   accountNumber: string;
   confirmAccountNumber: string;
   ifscCode: string;
