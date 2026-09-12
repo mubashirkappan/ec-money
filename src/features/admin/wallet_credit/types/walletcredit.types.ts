@@ -1,6 +1,6 @@
 import { CustomerTypes } from "../../customers/types/customer.types";
 
-type WalletCreditStatus = "pending" | "completed" | "cancelled"
+type WalletCreditStatus = "Pending" | "Completed" | "Cancelled"
 
 export interface WalletCreditTypes {
   id: number;

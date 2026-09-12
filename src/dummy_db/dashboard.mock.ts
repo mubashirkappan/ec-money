@@ -1,12 +1,12 @@
 import {
-  Landmark, UsersRound
+  Landmark, UsersRound, Wallet
 } from "lucide-react";
 
 import {
   QuickActionTypes,
 } from "../features/user/user_dashboard/types/dashboard.types";
 
-export const quickActions: QuickActionTypes[] = [
+export const userQuickActions: QuickActionTypes[] = [
   {
     id: 1,
     title: "Send Money",
@@ -20,5 +20,22 @@ export const quickActions: QuickActionTypes[] = [
     description: "View Beneficiaries",
     icon: UsersRound,
     href: "/beneficiary",
+  },
+];
+
+export const adminQuickActions: QuickActionTypes[] = [
+  {
+    id: 1,
+    title: "Customers",
+    description: "Manage customers",
+    icon: UsersRound,
+    href: "/customers",
+  },
+  {
+    id: 2,
+    title: "Wallet Credit",
+    description: "View wallet credit",
+    icon: Wallet,
+    href: "/wallet-credit",
   },
 ];

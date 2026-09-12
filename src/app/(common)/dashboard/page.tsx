@@ -9,8 +9,8 @@ export default function DashboardPage() {
   const userType = authCookies.getUserType();
 
   return (
-    <RoleGuard allowedRole={["user", "superadmin"]}>
-      {userType === "superadmin" ? (
+    <RoleGuard allowedRole={["user", "admin"]}>
+      {userType === "admin" ? (
         <AdminDashboardView />
       ) : (
         <UserDashboardView />

@@ -34,13 +34,13 @@ export const ROUTES = {
   // ADMIN STARTS
   CUSTOMERS: {
     path: "/customers",
-    userType: "superadmin",
+    userType: "admin",
     displayName: "Customers"
   },
 
   WALLET_CREDIT: {
     path: "/wallet-credit",
-    userType: "superadmin",
+    userType: "admin",
     displayName: "Wallet Credit"
   },
   // ADMIN ENDS

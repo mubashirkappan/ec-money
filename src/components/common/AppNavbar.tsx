@@ -200,7 +200,7 @@ export default function AppNavbar() {
     showing everything during the first render.
   */
 
-  const routes = userType === "superadmin"
+  const routes = userType === "admin"
       ? adminNavigation
       : userNavigation;
 

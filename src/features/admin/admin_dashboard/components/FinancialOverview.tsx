@@ -50,7 +50,7 @@ import {
   getNiceMax,
   getWeekChartData,
   getYearChartData,
-} from "@/features/user/user_dashboard/lib/financialChart";
+} from "@/features/admin/admin_dashboard/lib/financialChart";
 
 import {
   CalendarDays,
@@ -58,9 +58,9 @@ import {
 } from "lucide-react";
 
 const chartConfig = {
-  expense: {
-    label: "Expenses",
-    color: "#f87171",
+  walletCredits: {
+    label: "Wallet Credits",
+    color: "#00C950",
   },
 };
 
@@ -120,11 +120,11 @@ export default function FinancialOverview() {
 
   /*
    * Find maximum value
-   * from income and expense.
+   * from wallet credits.
    */
   const maxValue = Math.max(
     ...chartData.flatMap(
-      (item) => item.expense
+      (item) => item.walletCredits
     )
   );
 
@@ -190,7 +190,7 @@ export default function FinancialOverview() {
             </CardTitle>
 
             <CardDescription>
-              Expenses over time
+              Wallet Credits over time
             </CardDescription>
           </div>
 
@@ -428,8 +428,8 @@ export default function FinancialOverview() {
 
             <Line
               type="monotone"
-              dataKey="expense"
-              stroke="var(--color-expense)"
+              dataKey="walletCredits"
+              stroke="var(--color-walletCredits)"
               strokeWidth={2}
               dot={false}
             />

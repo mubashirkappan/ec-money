@@ -1,13 +1,13 @@
-import { transactions } from "@/dummy_db/transaction.mock";
+import { walletCredits } from "@/dummy_db/walletcredits.mock";
 
 export type ChartData = {
   label: string;
-  expense: number;
+  walletCredits: number;
 };
 
 export type Year = number;
 
-export function parseTransactionDate(date: string) {
+export function parseWalletCreditDate(date: string) {
   const [day, month, year] = date.split(" ");
 
   const monthIndex = new Date(
@@ -21,22 +21,22 @@ export function parseTransactionDate(date: string) {
   );
 }
 
-function getTransactionTotals(
-  filteredTransactions: typeof transactions
+function getWalletCreditTotals(
+  filteredWalletCredits: typeof walletCredits
 ) {
-  const expense = filteredTransactions
+  const walletCredits = filteredWalletCredits
     .filter(
-      (transaction) =>
-        transaction.type === "debited"
+      (credit) =>
+        credit.status === "Completed"
     )
     .reduce(
-      (total, transaction) =>
-        total + transaction.amount,
+      (total, credit) =>
+        total + credit.amount,
       0
     );
 
   return {
-    expense,
+    walletCredits,
   };
 }
 
@@ -71,26 +71,26 @@ export function getYearChartData(): ChartData[] {
 
   return years.map(
     (year: Year) => {
-      const yearTransactions =
-        transactions.filter(
-          (transaction) => {
+      const yearWalletCredits =
+        walletCredits.filter(
+          (credit) => {
             const date =
-              parseTransactionDate(
-                transaction.date
+              parseWalletCreditDate(
+                credit.date
               );
 
             return (
               date.getFullYear() ===
                 year &&
-              transaction.status ===
-                "completed"
+              credit.status ===
+                "Completed"
             );
           }
         );
 
       const totals =
-        getTransactionTotals(
-          yearTransactions
+        getWalletCreditTotals(
+          yearWalletCredits
         );
 
       return {
@@ -124,12 +124,12 @@ export function getMonthChartData(
 ): ChartData[] {
   return months.map(
     (month, index) => {
-      const monthTransactions =
-        transactions.filter(
-          (transaction) => {
+      const monthWalletCredits =
+        walletCredits.filter(
+          (credit) => {
             const date =
-              parseTransactionDate(
-                transaction.date
+              parseWalletCreditDate(
+                credit.date
               );
 
             return (
@@ -137,15 +137,15 @@ export function getMonthChartData(
                 selectedYear &&
               date.getMonth() ===
                 index &&
-              transaction.status ===
-                "completed"
+              credit.status ===
+                "Completed"
             );
           }
         );
 
       const totals =
-        getTransactionTotals(
-          monthTransactions
+        getWalletCreditTotals(
+          monthWalletCredits
         );
 
       return {
@@ -329,12 +329,12 @@ export function getWeekChartData(
           index
       );
 
-      const dayTransactions =
-        transactions.filter(
-          (transaction) => {
+      const dayWalletCredits =
+        walletCredits.filter(
+          (credit) => {
             const date =
-              parseTransactionDate(
-                transaction.date
+              parseWalletCreditDate(
+                credit.date
               );
 
             return (
@@ -344,15 +344,15 @@ export function getWeekChartData(
                 currentDate.getMonth() &&
               date.getDate() ===
                 currentDate.getDate() &&
-              transaction.status ===
-                "completed"
+              credit.status ===
+                "Completed"
             );
           }
         );
 
       const totals =
-        getTransactionTotals(
-          dayTransactions
+        getWalletCreditTotals(
+          dayWalletCredits
         );
 
       return {
@@ -385,19 +385,19 @@ export function getDayChartData(
     (hour): ChartData => {
       /*
        * Currently this uses
-       * the transaction date.
+       * the wallet credit date.
        *
-       * If your transaction data
+       * If your wallet credit data
        * contains time, this can
        * later be extended to
-       * group transactions by hour.
+       * group wallet credits by hour.
        */
-      const dayTransactions =
-        transactions.filter(
-          (transaction) => {
+      const dayWalletCredits =
+        walletCredits.filter(
+          (credit) => {
             const date =
-              parseTransactionDate(
-                transaction.date
+              parseWalletCreditDate(
+                credit.date
               );
 
             return (
@@ -407,16 +407,16 @@ export function getDayChartData(
                 selectedDate.getMonth() &&
               date.getDate() ===
                 selectedDate.getDate() &&
-              transaction.status ===
-                "completed"
+              credit.status ===
+                "Completed"
             );
           }
         );
 
       const totals =
-        getTransactionTotals(
+        getWalletCreditTotals(
           hour === 0
-            ? dayTransactions
+            ? dayWalletCredits
             : []
         );
 

@@ -3,7 +3,7 @@ import RoleGuard from "@/features/auth/roleGuard/RoleGuard";
 
 export default function PaymentPage() {
   return (
-    <RoleGuard allowedRole="superadmin">
+    <RoleGuard allowedRole="admin">
       <CustomersView />
     </RoleGuard>
   );
