@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { customers } from "@/dummy_db/customers.mock";
+import { walletCredits } from "@/dummy_db/walletcredits.mock";
 
 import WalletCreditHeader, {
   WalletCreditFilters,
@@ -69,29 +69,26 @@ export default function WalletCreditCard() {
 
       const matchesSearch =
       search === "" ||
-        credit.customerId
+        credit.customer.customerId
           .toLowerCase()
           .includes(search) ||
-        credit.customerName
+        credit.customer.customerName
           .toLowerCase()
-          .includes(search) ||
-        credit.customerContact1
-          .toString()
-          .includes(filters.search.trim());
+          .includes(search);
 
       /*
        * Status
        */
       const matchesStatus =
         filters.status === "all" ||
-        credit.isActive === filters.status;
+        credit.status === filters.status;
 
       /*
        * Wallet Credit added date
        */
       const WalletCreditAddedDate =
         parseWalletCreditDate(
-          credit.addedAt
+          credit.date
         );
 
       /*
@@ -146,8 +143,8 @@ export default function WalletCreditCard() {
   const sortedWalletCredits = useMemo(() => {
     return [...filteredWalletCredits].sort(
       (a, b) =>
-        new Date(b.addedAt).getTime() -
-        new Date(a.addedAt).getTime()
+        new Date(b.date).getTime() -
+        new Date(a.date).getTime()
     );
   }, [filteredWalletCredits]);
 
@@ -204,7 +201,7 @@ export default function WalletCreditCard() {
                   </th>
 
                   <th className="px-3 py-3 text-left text-sm font-semibold text-slate-600">
-                    Contact
+                    Amount
                   </th>
 
                   <th className="px-3 py-3 text-left text-sm font-semibold text-slate-600">
@@ -232,20 +229,20 @@ export default function WalletCreditCard() {
                     (credit) => {
                       const addedAt =
                         formatAddedAt(
-                          credit.addedAt
+                          credit.date
                         );
 
                       return (
                         <tr
                           key={credit.id}
                           className="transition-colors hover:bg-slate-50 cursor-pointer"
-                          onClick={() => router.push(`/wallet-credit/${credit.customerId}`)}
+                          onClick={() => router.push(`/wallet-credit/${credit.id}`)}
                         >
                           {/* Contact */}
                           <td className="px-3 py-4">
                             <span className="font-semibold">
                               {
-                                credit.customerId
+                                credit.customer.customerId
                               }
                             </span>
                           </td>
@@ -254,7 +251,7 @@ export default function WalletCreditCard() {
                           <td className="px-3 py-4">
                             <span className="font-semibold">
                               {
-                                credit.customerName
+                                credit.customer.customerName
                               }
                             </span>
                           </td>
@@ -263,7 +260,7 @@ export default function WalletCreditCard() {
                           <td className="px-3 py-4">
                             <span className="font-semibold">
                               {
-                                credit.customerContact1
+                                credit.amount
                               }
                             </span>
                           </td>
@@ -286,14 +283,14 @@ export default function WalletCreditCard() {
                             <span
                               className={cn(
                                 "inline-flex rounded-full px-3 py-1 text-xs font-medium",
-                                credit.isActive
+                                credit.status === "Pending"
+                                  ? "bg-yellow-50 text-yellow-700"
+                                  : credit.status === "Completed"
                                   ? "bg-emerald-50 text-emerald-700"
                                   : "bg-slate-100 text-slate-500"
                               )}
                             >
-                              {credit.isActive
-                                ? "Active"
-                                : "Inactive"}
+                              {credit.status}
                             </span>
                           </td>
                         </tr>

@@ -19,35 +19,35 @@ import {
 import { Input } from "@/components/ui/input";
 import { FunnelPlus } from "lucide-react";
 
-export type CustomersFilters = {
+export type WalletCreditFilters = {
   search: string;
   fromDate: string;
   toDate: string;
-  status: "all" | boolean ;
+  status: "all" | "Pending" | "Completed" | "Cancelled";
 };
 
-type CustomersHeaderProps = {
-  filters: CustomersFilters;
+type WalletCreditHeaderProps = {
+  filters: WalletCreditFilters;
   resultCount: number;
   onSearchChange: (value: string) => void;
-  onApplyFilters: (filters: CustomersFilters) => void;
+  onApplyFilters: (filters: WalletCreditFilters) => void;
   onClearFilters: () => void;
 };
 
-export default function CustomersHeader({
+export default function WalletCreditHeader({
   filters,
   resultCount,
   onSearchChange,
   onApplyFilters,
   onClearFilters,
-}: CustomersHeaderProps) {
+}: WalletCreditHeaderProps) {
   const [open, setOpen] = useState(false);
 
   const [fromDate, setFromDate] = useState(filters.fromDate);
   const [toDate, setToDate] = useState(filters.toDate);
 
   const [status, setStatus] =
-    useState<"all" | boolean>(
+    useState<"all" | "Pending" | "Completed" | "Cancelled">(
       filters.status
     );
 
@@ -80,13 +80,13 @@ export default function CustomersHeader({
   return (
     <Card className="border-.5 border-slate-200/70 p-5">
       <CardTitle>
-        All Customers
+        All Wallet Credits
       </CardTitle>
 
       <CardContent className="p-0">
         <div className="grid md:flex items-end justify-between gap-2">
           <AppSearchInput
-            id="searchCustomers"
+            id="searchWalletCredits"
             placeholder="Search..."
             className="w-60"
             value={filters.search}
@@ -135,11 +135,11 @@ export default function CustomersHeader({
               <DialogContent className="sm:max-w-[500px]">
                 <DialogHeader>
                   <DialogTitle>
-                    Filter Customers
+                    Filter Wallet Credits
                   </DialogTitle>
 
                   <DialogDescription>
-                    Filter your Customers by date and status.
+                    Filter your Wallet Credits by date and status.
                   </DialogDescription>
                 </DialogHeader>
 
@@ -213,29 +213,43 @@ export default function CustomersHeader({
                       <Button
                         type="button"
                         variant={
-                          status === true
+                          status === "Pending"
                             ? "default"
                             : "outline"
                         }
                         onClick={() =>
-                          setStatus(true)
+                          setStatus("Pending")
                         }
                       >
-                        Active
+                        Pending
                       </Button>
 
                       <Button
                         type="button"
                         variant={
-                          status === false
+                          status === "Completed"
                             ? "default"
                             : "outline"
                         }
                         onClick={() =>
-                          setStatus(false)
+                          setStatus("Completed")
                         }
                       >
-                        Not Active
+                        Completed
+                      </Button>
+
+                      <Button
+                        type="button"
+                        variant={
+                          status === "Cancelled"
+                            ? "default"
+                            : "outline"
+                        }
+                        onClick={() =>
+                          setStatus("Cancelled")
+                        }
+                      >
+                        Cancelled
                       </Button>
                     </div>
                   </div>

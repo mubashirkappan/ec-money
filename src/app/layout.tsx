@@ -5,7 +5,9 @@ import "./globals.css";
 
 import { QueryProvider } from "@/providers";
 
-import { ThemeToggle } from "@/components/layout/theme-toggle";
+import { env } from "@/lib/env"
+
+// import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -13,7 +15,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Wallet",
+  title: env.appName,
   description: "Wallet System",
 };
 
@@ -26,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.variable}>
         <QueryProvider>{children}</QueryProvider>
-        <ThemeToggle />
+        {/* <ThemeToggle /> */}
       </body>
     </html>
   );
