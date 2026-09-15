@@ -18,7 +18,8 @@ export default function PageContainer({
         <SidebarProvider>
           {/* <AppSidebar /> */}
           <AppNavbar />
-          <div className="w-full min-w-0 px-4 py-2 mt-16">
+          {/* <div className="w-full min-w-0 px-4 py-2 mt-16"> */}
+          <div className="w-full min-w-0 px-4 py-2 mt-16 min-h-[calc(100vh-4rem)]">
             {children}
           </div>
         </SidebarProvider>

@@ -75,7 +75,7 @@ export default function CustomersCard() {
         customer.customerName
           .toLowerCase()
           .includes(search) ||
-        customer.customerContact1
+        customer.contact1
           .toString()
           .includes(filters.search.trim());
 
@@ -263,7 +263,7 @@ export default function CustomersCard() {
                           <td className="px-3 py-4">
                             <span className="font-semibold">
                               {
-                                customer.customerContact1
+                                customer.contact1
                               }
                             </span>
                           </td>

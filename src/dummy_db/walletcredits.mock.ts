@@ -25,7 +25,7 @@ export const walletCredits: WalletCreditTypes[] = [
 
   {
     id: 3,
-    customer: customers[2],
+    customer: customers[0],
     amount: 750,
     date: "15 Aug 2026",
     time: "4:45 PM",
@@ -55,7 +55,7 @@ export const walletCredits: WalletCreditTypes[] = [
 
   {
     id: 6,
-    customer: customers[2],
+    customer: customers[1],
     amount: 3200,
     date: "22 Aug 2026",
     time: "10:12 AM",
@@ -85,7 +85,7 @@ export const walletCredits: WalletCreditTypes[] = [
 
   {
     id: 9,
-    customer: customers[2],
+    customer: customers[0],
     amount: 900,
     date: "02 Sep 2026",
     time: "5:21 PM",

@@ -1,42 +1,23 @@
 import { UserDetailsTypes } from "@/types/user.types";
+import { customers } from "@/dummy_db/customers.mock"
+import { adminDetails } from "@/dummy_db/admin.mock"
 
 export const users: UserDetailsTypes[] = [
   {
     id: 1,
-    orgName: "WORLD TRADE TRANSFER PRIVATE LIMITED",
-    username: "WTTPL(Admin)",
-    email: "worldtrade@gmail.com",
-    contact: "1234567890",
+    user: adminDetails,
     userType: "admin",
     isActive: true,
   },
   {
     id: 2,
-    profileImg: "/assets/profile/image1.png",
-    username: "John Adam",
-    orgName: "GOODWAY",
-    email: "goodway@gmail.com",
-    contact: "2468246824",
-    dateOfBirth: "1998-11-23",
-    personalAddress: "personal address",
-    orgAddress: "organization address",
-    proofType: "Driving License",
-    proofDoc: "/assets/proofdoc/proofdoc1.pdf",
+    user: customers[0],
     userType: "user",
     isActive: true,
   },
   {
     id: 3,
-    profileImg: "/assets/profile/image2.jpg",
-    username: "Alex Mejo",
-    orgName: "ROADWAY",
-    email: "roadway@gmail.com",
-    contact: "1425362827",
-    dateOfBirth: "2000-08-24",
-    personalAddress: "personal address",
-    orgAddress: "organization address",
-    proofType: "Aadhaar",
-    proofDoc: "/assets/proofdoc/proofdoc2.jpg",
+    user: customers[1],
     userType: "user",
     isActive: true,
   },

@@ -13,12 +13,12 @@ type LoginDataProps = {
 export function Login(loginDataProps: LoginDataProps) {
   const user = loginData.find(
     (loginUser) =>
-      loginUser.userId.contact === loginDataProps.username &&
+      loginUser.userId.user.contact1 === loginDataProps.username || loginUser.userId.user.email === loginDataProps.username &&
       loginUser.password === loginDataProps.password
   );
 
   if (user) {
-    authCookies.setAuthCookies(user.userId.username, user.userId.email, user.userId.userType, user.userId.id.toString());
+    authCookies.setAuthCookies(user.userId.user.contact1, user.userId.user.email, user.userId.userType, user.userId.id.toString());
     console.log("Login successful");
     return true
   } else {
