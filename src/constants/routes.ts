@@ -41,7 +41,7 @@ export const ROUTES = {
   WALLET_CREDIT: {
     path: "/wallet-credit",
     userType: "admin",
-    displayName: "Wallet Credit"
+    displayName: "Wallet Credits"
   },
   // ADMIN ENDS
 

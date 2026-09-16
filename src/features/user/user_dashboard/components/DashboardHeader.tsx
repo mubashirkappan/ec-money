@@ -7,7 +7,7 @@ export default function DashboardHeader() {
   const userName = authCookies.getUsername();
 
   return (
-    <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <div className="mb-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">
           Welcome, {userName} 👋

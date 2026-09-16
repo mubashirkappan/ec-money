@@ -33,7 +33,7 @@ export const adminQuickActions: QuickActionTypes[] = [
   },
   {
     id: 2,
-    title: "Wallet Credit",
+    title: "Wallet Credits",
     description: "View wallet credit",
     icon: Wallet,
     href: "/wallet-credit",

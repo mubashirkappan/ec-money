@@ -22,7 +22,6 @@ export const customers: CustomerTypes[] = [
   {
     id: 2,
     customerId: "CUS0002",
-    profileImg: "/profile/image2.jpg",
     customerName: "Mohammed Ali",
     orgName: "ROADWAY",
     email: "roadway@gmail.com",
