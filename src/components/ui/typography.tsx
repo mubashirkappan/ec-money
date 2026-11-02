@@ -1,5 +1,6 @@
+
 import { cn } from "@/lib/utils";
-import { HTMLAttributes } from "react";
+import type { HTMLAttributes, ElementType } from "react";
 
 type Variant =
   | "display"
@@ -12,41 +13,26 @@ type Variant =
 
 interface TypographyProps extends HTMLAttributes<HTMLElement> {
   variant?: Variant;
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
 }
 
 const styles: Record<Variant, string> = {
-  display:
-    "text-5xl font-bold tracking-tight",
-
-  h1:
-    "text-4xl font-bold",
-
-  h2:
-    "text-3xl font-semibold",
-
-  h3:
-    "text-2xl font-semibold",
-
-  title:
-    "text-xl font-semibold",
-
-  body:
-    "text-base text-slate-600",
-
-  caption:
-    "text-sm text-slate-500",
+  display: "text-5xl font-bold tracking-tight",
+  h1: "text-4xl font-bold",
+  h2: "text-3xl font-semibold",
+  h3: "text-2xl font-semibold",
+  title: "text-xl font-semibold",
+  body: "text-base text-slate-600",
+  caption: "text-sm text-slate-500",
 };
 
 export function Typography({
-  as = "p",
+  as: Component = "p",
   variant = "body",
   className,
   children,
   ...props
 }: TypographyProps) {
-  const Component = as;
-
   return (
     <Component
       className={cn(styles[variant], className)}
